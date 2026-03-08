@@ -4,6 +4,8 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page {
+    // --- GESTIONE DEL CICLO DI VITA (LIFECYCLE) ---
+
     id: mainPage
 
     property int currentFilter: CameraImageProcessing.ColorFilterNone
@@ -15,6 +17,13 @@ Page {
     }
 
     allowedOrientations: Orientation.Portrait
+    // 1. Gestisce cosa succede quando cambi pagina (es. vai su AboutPage)
+    onStatusChanged: {
+        if (status === PageStatus.Inactive || status === PageStatus.Deactivating)
+            camera.cameraState = Camera.UnloadedState;
+        else if (status === PageStatus.Active && !mainPage.isFrozen)
+            camera.cameraState = Camera.ActiveState;
+    }
 
     Camera {
         id: camera
@@ -278,7 +287,7 @@ Page {
                                 // Go to live mode
                                 mainPage.isFrozen = false;
                                 frozenView.source = "";
-                                camera.start();
+                                camera.cameraState = Camera.ActiveState;
                             } else {
                                 // Freeze the image
                                 viewfinder.grabToImage(function(result) {
@@ -286,7 +295,7 @@ Page {
                                     mainPage.isFrozen = true;
                                     camera.isFlashOn = false;
                                     syncCameraSettings();
-                                    camera.stop();
+                                    camera.cameraState = Camera.UnloadedState;
                                 });
                             }
                         }
@@ -405,18 +414,23 @@ Page {
 
         }
 
-        Connections {
-            target: Qt.application
-            onActiveChanged: {
-                if (Qt.application.active) {
-                    camera.start();
-                } else {
-                    camera.stop();
-                    camera.isFlashOn = false;
-                }
+    }
+
+    // 2. Gestisce cosa succede quando l'app va in background (es. torni alla Home)
+    Connections {
+        target: Qt.application
+        onActiveChanged: {
+            if (Qt.application.active) {
+                // Riaccendi la fotocamera SOLO se siamo sulla pagina principale e NON è in pausa
+                if (mainPage.status === PageStatus.Active && !mainPage.isFrozen)
+                    camera.cameraState = Camera.ActiveState;
+
+            } else {
+                // Spegni tutto quando l'app viene messa in background
+                camera.cameraState = Camera.UnloadedState;
+                camera.isFlashOn = false;
             }
         }
-
     }
 
 }

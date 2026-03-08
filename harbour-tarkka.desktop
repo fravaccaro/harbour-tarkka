@@ -6,6 +6,6 @@ Exec=harbour-tarkka
 Name=Tarkka
 
 [X-Sailjail]
-OrganizationName=org.tarkka.magnifier
+OrganizationName=org.tarkka
 ApplicationName=harbour-tarkka
 Permissions=Camera
