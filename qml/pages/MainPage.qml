@@ -26,11 +26,13 @@ Page {
         onCameraStatusChanged: {
             if (cameraStatus === Camera.ActiveStatus)
                 syncCameraSettings();
+
         }
 
         focus {
             focusMode: Camera.FocusContinuous
         }
+
     }
 
     Timer {
@@ -55,308 +57,366 @@ Page {
                     pageStack.push(Qt.resolvedUrl("AboutPage.qml"));
                 }
             }
+
         }
         // Viewfinder and gestures
-                Item {
+
+        Item {
+            // PinchArea end
+
+            anchors.fill: parent
+            clip: true
+
+            VideoOutput {
+                id: viewfinder
+
+                source: camera
+                anchors.fill: parent
+                fillMode: VideoOutput.PreserveAspectCrop
+            }
+
+            Image {
+                id: frozenView
+
+                anchors.fill: parent
+                fillMode: Image.PreserveAspectCrop
+                visible: mainPage.isFrozen
+
+                Behavior on scale {
+                    NumberAnimation {
+                        duration: 100
+                    }
+
+                }
+
+            }
+
+            // Pinch to zoom
+            PinchArea {
+                id: pinchArea
+
+                property real initialZoom: 1
+                property real initialScale: 1
+
+                anchors.fill: parent
+                // When fingers touch the screen
+                onPinchStarted: {
+                    if (mainPage.isFrozen)
+                        initialScale = frozenView.scale;
+                    else
+                        initialZoom = zoomSlider.value;
+                }
+                // When fingers move
+                onPinchUpdated: {
+                    if (mainPage.isFrozen) {
+                        // Zoom frozen image
+                        var newScale = initialScale * pinch.scale;
+                        frozenView.scale = Math.max(1, Math.min(newScale, 4));
+                    } else {
+                        // Update slider
+                        var newZoom = initialZoom * pinch.scale;
+                        zoomSlider.value = Math.max(zoomSlider.minimumValue, Math.min(newZoom, zoomSlider.maximumValue));
+                    }
+                }
+
+                // When frozen view is disabled
+                Connections {
+                    target: mainPage
+                    onIsFrozenChanged: {
+                        if (!mainPage.isFrozen)
+                            frozenView.scale = 1;
+
+                    }
+                }
+
+                // Tap to focus
+                MouseArea {
                     anchors.fill: parent
-                    clip: true
-
-                    VideoOutput {
-                        id: viewfinder
-                        source: camera
-                        anchors.fill: parent
-                        fillMode: VideoOutput.PreserveAspectCrop
-                    }
-
-                    Image {
-                        id: frozenView
-                        anchors.fill: parent
-                        fillMode: Image.PreserveAspectCrop
-                        visible: mainPage.isFrozen
-
-                        Behavior on scale { NumberAnimation { duration: 100 } }
-                    }
-
-                    // Pinch to zoom
-                    PinchArea {
-                        id: pinchArea
-                        anchors.fill: parent
-
-                        property real initialZoom: 1.0
-                        property real initialScale: 1.0
-
-                        // When fingers touch the screen
-                        onPinchStarted: {
-                            if (mainPage.isFrozen) {
-                                initialScale = frozenView.scale;
-                            } else {
-                                initialZoom = zoomSlider.value;
-                            }
-                        }
-
-                        // When fingers move
-                        onPinchUpdated: {
-                            if (mainPage.isFrozen) {
-                                // Zoom frozen image
-                                var newScale = initialScale * pinch.scale;
-                                frozenView.scale = Math.max(1.0, Math.min(newScale, 4.0));
-                            } else {
-                                // Update slider
-                                var newZoom = initialZoom * pinch.scale;
-                                zoomSlider.value = Math.max(zoomSlider.minimumValue, Math.min(newZoom, zoomSlider.maximumValue));
-                            }
-                        }
-
-                        // When frozen view is disabled
-                        Connections {
-                            target: mainPage
-                            onIsFrozenChanged: {
-                                if (!mainPage.isFrozen) {
-                                    frozenView.scale = 1.0;
-                                }
-                            }
-                        }
-
-                        // Tap to focus
-                        MouseArea {
-                            anchors.fill: parent
-
-                            onClicked: {
-                                if (!mainPage.isFrozen) {
-                                    var pointX = mouse.x / width;
-                                    var pointY = mouse.y / height;
-
-                                    camera.focus.focusMode = Camera.FocusMacro;
-                                    camera.focus.focusPointMode = Camera.FocusPointCustom;
-                                    camera.focus.customFocusPoint = Qt.point(pointX, pointY);
-
-                                    camera.searchAndLock();
-
-                                    focusIndicator.x = mouse.x - (focusIndicator.width / 2);
-                                    focusIndicator.y = mouse.y - (focusIndicator.height / 2);
-                                    focusIndicator.visible = true;
-
-                                    focusTimer.restart();
-                                }
-                            }
-                        }
-                    } // PinchArea end
-
-                    Rectangle {
-                        id: focusIndicator
-
-                        width: Theme.itemSizeMedium
-                        height: Theme.itemSizeMedium
-                        color: "transparent"
-                        border.color: Theme.highlightColor
-                        border.width: 4
-                        radius: width / 2
-                        visible: false
-
-                        Timer {
-                            id: focusTimer
-
-                            interval: 1500
-                            onTriggered: {
-                                focusIndicator.visible = false;
-
-                                // Back to continuous autofocus
-                                camera.focus.focusMode = Camera.FocusContinuous;
-                                camera.focus.focusPointMode = Camera.FocusPointAuto;
-                                camera.unlock();
-                            }
+                    onClicked: {
+                        if (!mainPage.isFrozen) {
+                            var pointX = mouse.x / width;
+                            var pointY = mouse.y / height;
+                            camera.focus.focusMode = Camera.FocusMacro;
+                            camera.focus.focusPointMode = Camera.FocusPointCustom;
+                            camera.focus.customFocusPoint = Qt.point(pointX, pointY);
+                            camera.searchAndLock();
+                            focusIndicator.x = mouse.x - (focusIndicator.width / 2);
+                            focusIndicator.y = mouse.y - (focusIndicator.height / 2);
+                            focusIndicator.visible = true;
+                            focusTimer.restart();
                         }
                     }
                 }
 
+            }
 
+            Rectangle {
+                id: focusIndicator
 
-                // --- Floating controls ---
-                        // Zoom, flash and buttons
-                        Column {
-                            id: floatingControls
+                width: Theme.itemSizeMedium
+                height: Theme.itemSizeMedium
+                color: "transparent"
+                border.color: Theme.highlightColor
+                border.width: 4
+                radius: width / 2
+                visible: false
 
-                            width: parent.width
-                            // Anchor on top of the overlay
-                            anchors.bottom: controlOverlay.top
-                            anchors.bottomMargin: Theme.paddingLarge
-                            spacing: Theme.paddingLarge
+                Timer {
+                    id: focusTimer
 
-                            // Slider Zoom and Flash row
-                            Item {
-                                width: parent.width
-                                height: flashButton.height
-                                visible: !mainPage.isFrozen
+                    interval: 1500
+                    onTriggered: {
+                        focusIndicator.visible = false;
+                        // Back to continuous autofocus
+                        camera.focus.focusMode = Camera.FocusContinuous;
+                        camera.focus.focusPointMode = Camera.FocusPointAuto;
+                        camera.unlock();
+                    }
+                }
 
-                                Slider {
-                                    id: zoomSlider
+            }
 
-                                    anchors.left: parent.left
-                                    anchors.right: flashButton.left
-                                    anchors.rightMargin: Theme.paddingMedium
-                                    anchors.verticalCenter: parent.verticalCenter
+        }
 
-                                    label: "Zoom: " + value.toFixed(1) + "x"
-                                    minimumValue: 1
-                                    maximumValue: camera.maximumDigitalZoom > 1 ? camera.maximumDigitalZoom : 4
-                                    value: 1
-                                    onValueChanged: {
-                                        camera.digitalZoom = value;
-                                    }
-                                }
+        // --- Floating controls ---
+        // Zoom, flash and buttons
+        Column {
+            id: floatingControls
 
-                                IconButton {
-                                    id: flashButton
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    anchors.right: parent.right
-                                    anchors.rightMargin: Theme.horizontalPageMargin
+            width: parent.width
+            // Anchor on top of the overlay
+            anchors.bottom: controlOverlay.top
+            anchors.bottomMargin: Theme.paddingLarge
+            spacing: Theme.paddingLarge
 
-                                    icon.source: camera.isFlashOn ? "image://theme/icon-camera-flash-on" : "image://theme/icon-camera-flash-off"
-                                    icon.color: pressed ? Theme.highlightColor : Theme.primaryColor
-                                    icon.width: Theme.iconSizeMedium
-                                    icon.height: Theme.iconSizeMedium
-                                    onClicked: {
-                                        camera.isFlashOn = !camera.isFlashOn;
-                                        syncCameraSettings();
-                                    }
-                                }
-                            }
+            // Slider Zoom and Flash row
+            Item {
+                width: parent.width
+                height: flashButton.height
+                visible: !mainPage.isFrozen
 
-                            // Minus, freeze and plus row
-                            Row {
-                                id: controlsRow
+                Slider {
+                    id: zoomSlider
 
-                                property real itemWidth: width / 3
+                    anchors.left: parent.left
+                    anchors.right: flashButton.left
+                    anchors.rightMargin: Theme.paddingMedium
+                    anchors.verticalCenter: parent.verticalCenter
+                    label: "Zoom: " + value.toFixed(1) + "x"
+                    minimumValue: 1
+                    maximumValue: camera.maximumDigitalZoom > 1 ? camera.maximumDigitalZoom : 4
+                    value: 1
+                    onValueChanged: {
+                        camera.digitalZoom = value;
+                    }
+                }
 
-                                width: parent.width
-                                anchors.horizontalCenter: parent.horizontalCenter
-                                height: Theme.itemSizeLarge
+                IconButton {
+                    id: flashButton
 
-                                // Zoom - button
-                                Item {
-                                    width: controlsRow.itemWidth
-                                    height: parent.height
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.right: parent.right
+                    anchors.rightMargin: Theme.horizontalPageMargin
+                    icon.source: camera.isFlashOn ? "image://theme/icon-camera-flash-on" : "image://theme/icon-camera-flash-off"
+                    icon.color: pressed ? Theme.highlightColor : Theme.primaryColor
+                    icon.width: Theme.iconSizeMedium
+                    icon.height: Theme.iconSizeMedium
+                    onClicked: {
+                        camera.isFlashOn = !camera.isFlashOn;
+                        syncCameraSettings();
+                    }
+                }
 
-                                    IconButton {
-                                        visible: !mainPage.isFrozen
-                                        anchors.verticalCenter: parent.verticalCenter
-                                                                                anchors.right: parent.right
-                                        icon.width: Theme.iconSizeLarge
-                                        icon.height: Theme.iconSizeLarge
-                                        icon.source: "image://theme/icon-m-remove"
-                                        icon.color: pressed ? Theme.highlightColor : Theme.primaryColor
-                                        onClicked: {
-                                            var step = (zoomSlider.maximumValue - zoomSlider.minimumValue) / 4;
-                                            zoomSlider.value = Math.max(zoomSlider.minimumValue, zoomSlider.value - step);
-                                        }
-                                    }
-                                }
+            }
 
-                                // Freeze Frame button
-                                                Item {
-                                                    width: controlsRow.itemWidth
-                                                    height: parent.height
+            // Minus, freeze and plus row
+            Row {
+                id: controlsRow
 
-                                                    IconButton {
-                                                        id: freezeButton
+                property real itemWidth: width / 3
 
-                                                        anchors.centerIn: parent
-                                                        icon.source: mainPage.isFrozen ? "image://theme/icon-l-clear" : "image://theme/icon-camera-shutter"
-                                                        icon.color: pressed ? Theme.highlightColor : Theme.primaryColor
-                                                        icon.width: Theme.iconSizeLarge
-                                                        icon.height: Theme.iconSizeLarge
-                                                        onClicked: {
-                                                            if (mainPage.isFrozen) {
-                                                                // Go to live mode
-                                                                mainPage.isFrozen = false;
-                                                                frozenView.source = "";
-                                                                camera.start();
-                                                            } else {
-                                                                // Freeze the image
-                                                                viewfinder.grabToImage(function(result) {
-                                                                    frozenView.source = result.url;
-                                                                    mainPage.isFrozen = true;
-                                                                    camera.isFlashOn = false;
-                                                                                                                        syncCameraSettings();
-                                                                    camera.stop();
-                                                                });
-                                                            }
-                                                        }
-                                                    }
-                                                }
+                width: parent.width
+                anchors.horizontalCenter: parent.horizontalCenter
+                height: Theme.itemSizeLarge
 
-                                // Zoom + button
-                                Item {
-                                    width: controlsRow.itemWidth
-                                    height: parent.height
+                // Zoom - button
+                Item {
+                    width: controlsRow.itemWidth
+                    height: parent.height
 
-                                    IconButton {
-                                        visible: !mainPage.isFrozen
-                                        anchors.verticalCenter: parent.verticalCenter
-                                                                                anchors.left: parent.left
-                                        icon.width: Theme.iconSizeLarge
-                                        icon.height: Theme.iconSizeLarge
-                                        icon.source: "image://theme/icon-m-add"
-                                        icon.color: pressed ? Theme.highlightColor : Theme.primaryColor
-
-                                        onClicked: {
-                                            var step = (zoomSlider.maximumValue - zoomSlider.minimumValue) / 4;
-                                            zoomSlider.value = Math.min(zoomSlider.maximumValue, zoomSlider.value + step);
-                                        }
-                                    }
-                                }
-                            }
+                    IconButton {
+                        visible: !mainPage.isFrozen
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.right: parent.right
+                        icon.width: Theme.iconSizeLarge
+                        icon.height: Theme.iconSizeLarge
+                        icon.source: "image://theme/icon-m-remove"
+                        icon.color: pressed ? Theme.highlightColor : Theme.primaryColor
+                        onClicked: {
+                            var step = (zoomSlider.maximumValue - zoomSlider.minimumValue) / 4;
+                            zoomSlider.value = Math.max(zoomSlider.minimumValue, zoomSlider.value - step);
                         }
-                        // --- Floating controls end ---
+                    }
 
-                        // --- Overlay ---
-                        Rectangle {
-                            id: controlOverlay
-                            anchors.bottom: parent.bottom
-                                                        width: parent.width
-                                                        height: filterColumn.height + (Theme.paddingLarge * 2)
-                                                        color: Theme.rgba(Theme.overlayBackgroundColor, 0.6)
+                }
 
-                                                        // Opacity is used because visible would collapse the container
-                                                        opacity: mainPage.isFrozen ? 0.0 : 1.0
-                                                        enabled: !mainPage.isFrozen
+                // Freeze Frame button
+                Item {
+                    width: controlsRow.itemWidth
+                    height: parent.height
 
-                                                        Behavior on opacity { FadeAnimation {} }
+                    IconButton {
+                        id: freezeButton
 
-                            Column {
-                                id: filterColumn
-
-                                width: parent.width
-                                anchors.verticalCenter: parent.verticalCenter
-
-                                ComboBox {
-                                    width: parent.width
-                                    label: qsTr("Filter")
-                                    labelColor: Theme.primaryColor
-
-                                    menu: ContextMenu {
-                                        MenuItem { text: qsTr("None"); onClicked: { currentFilter = CameraImageProcessing.ColorFilterNone; syncCameraSettings(); } }
-                                        MenuItem { text: qsTr("Black and white"); onClicked: { currentFilter = CameraImageProcessing.ColorFilterGrayscale; syncCameraSettings(); } }
-                                        MenuItem { text: qsTr("Negative"); onClicked: { currentFilter = CameraImageProcessing.ColorFilterNegative; syncCameraSettings(); } }
-                                        MenuItem { text: qsTr("Solarize"); onClicked: { currentFilter = CameraImageProcessing.ColorFilterSolarize; syncCameraSettings(); } }
-                                        MenuItem { text: qsTr("Whiteboard"); onClicked: { currentFilter = CameraImageProcessing.ColorFilterWhiteboard; syncCameraSettings(); } }
-                                        MenuItem { text: qsTr("Blackboard"); onClicked: { currentFilter = CameraImageProcessing.ColorFilterBlackboard; syncCameraSettings(); } }
-                                    }
-                                }
-                            }
-                        }
-                        // --- Overlay end ---
-
-                        Connections {
-                            target: Qt.application
-                            onActiveChanged: {
-                                if (Qt.application.active) {
-                                    camera.start();
-                                } else {
-                                    camera.stop();
+                        anchors.centerIn: parent
+                        icon.source: mainPage.isFrozen ? "image://theme/icon-l-clear" : "image://theme/icon-camera-shutter"
+                        icon.color: pressed ? Theme.highlightColor : Theme.primaryColor
+                        icon.width: Theme.iconSizeLarge
+                        icon.height: Theme.iconSizeLarge
+                        onClicked: {
+                            if (mainPage.isFrozen) {
+                                // Go to live mode
+                                mainPage.isFrozen = false;
+                                frozenView.source = "";
+                                camera.start();
+                            } else {
+                                // Freeze the image
+                                viewfinder.grabToImage(function(result) {
+                                    frozenView.source = result.url;
+                                    mainPage.isFrozen = true;
                                     camera.isFlashOn = false;
-                                }
+                                    syncCameraSettings();
+                                    camera.stop();
+                                });
                             }
                         }
                     }
+
                 }
+
+                // Zoom + button
+                Item {
+                    width: controlsRow.itemWidth
+                    height: parent.height
+
+                    IconButton {
+                        visible: !mainPage.isFrozen
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.left: parent.left
+                        icon.width: Theme.iconSizeLarge
+                        icon.height: Theme.iconSizeLarge
+                        icon.source: "image://theme/icon-m-add"
+                        icon.color: pressed ? Theme.highlightColor : Theme.primaryColor
+                        onClicked: {
+                            var step = (zoomSlider.maximumValue - zoomSlider.minimumValue) / 4;
+                            zoomSlider.value = Math.min(zoomSlider.maximumValue, zoomSlider.value + step);
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+        // --- Overlay ---
+        Rectangle {
+            id: controlOverlay
+
+            anchors.bottom: parent.bottom
+            width: parent.width
+            height: filterColumn.height + (Theme.paddingLarge * 2)
+            color: Theme.rgba(Theme.overlayBackgroundColor, 0.6)
+            // Opacity is used because visible would collapse the container
+            opacity: mainPage.isFrozen ? 0 : 1
+            enabled: !mainPage.isFrozen
+
+            Column {
+                id: filterColumn
+
+                width: parent.width
+                anchors.verticalCenter: parent.verticalCenter
+
+                ComboBox {
+                    width: parent.width
+                    label: qsTr("Filter")
+                    labelColor: Theme.primaryColor
+
+                    menu: ContextMenu {
+                        MenuItem {
+                            text: qsTr("None")
+                            onClicked: {
+                                currentFilter = CameraImageProcessing.ColorFilterNone;
+                                syncCameraSettings();
+                            }
+                        }
+
+                        MenuItem {
+                            text: qsTr("Black and white")
+                            onClicked: {
+                                currentFilter = CameraImageProcessing.ColorFilterGrayscale;
+                                syncCameraSettings();
+                            }
+                        }
+
+                        MenuItem {
+                            text: qsTr("Negative")
+                            onClicked: {
+                                currentFilter = CameraImageProcessing.ColorFilterNegative;
+                                syncCameraSettings();
+                            }
+                        }
+
+                        MenuItem {
+                            text: qsTr("Solarize")
+                            onClicked: {
+                                currentFilter = CameraImageProcessing.ColorFilterSolarize;
+                                syncCameraSettings();
+                            }
+                        }
+
+                        MenuItem {
+                            text: qsTr("Whiteboard")
+                            onClicked: {
+                                currentFilter = CameraImageProcessing.ColorFilterWhiteboard;
+                                syncCameraSettings();
+                            }
+                        }
+
+                        MenuItem {
+                            text: qsTr("Blackboard")
+                            onClicked: {
+                                currentFilter = CameraImageProcessing.ColorFilterBlackboard;
+                                syncCameraSettings();
+                            }
+                        }
+
+                    }
+
+                }
+
+            }
+
+            Behavior on opacity {
+                FadeAnimation {
+                }
+
+            }
+
+        }
+
+        Connections {
+            target: Qt.application
+            onActiveChanged: {
+                if (Qt.application.active) {
+                    camera.start();
+                } else {
+                    camera.stop();
+                    camera.isFlashOn = false;
+                }
+            }
+        }
+
+    }
+
+}
