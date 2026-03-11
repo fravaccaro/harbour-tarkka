@@ -56,8 +56,8 @@
         <translation>Italiano</translation>
     </message>
     <message>
-        <source>Request a new language or contribute to existing languages on the Transifex project page.</source>
-        <translation>Richiedi una nuova lingua o contribuisci a quelle esistenti sulla pagina del progetto Transifex.</translation>
+        <source>Request a new language or contribute to existing languages.</source>
+        <translation>Richiedi una nuova lingua o contribuisci a quelle esistenti.</translation>
     </message>
     <message>
         <source>Transifex</source>
@@ -68,35 +68,28 @@
         <translation>Tarkka è una lente d&apos;ingrandimento digitale progettata specificamente per Sailfish OS. Sfrutta le funzionalità native della fotocamera per aiutarti a osservare i dettagli chiaramente.</translation>
     </message>
     <message>
-        <source>&lt;ul&gt;&lt;li&gt;Smooth digital zoom up to 4x.&lt;/li&gt;&lt;li&gt;Specialized filters: Negative, Black and white, Solarize, Whiteboard, and Blackboard.&lt;/li&gt;&lt;li&gt;Torch support for low-light environments.&lt;/li&gt;&lt;li&gt;Minimalist UI optimized for one-handed use.&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>&lt;ul&gt;&lt;li&gt;Zoom digitale fluido fino a 4x.&lt;/li&gt;&lt;li&gt;Filtri specializzati: Negativo, Bianco e nero, Solarizza, Lavagna bianca e Lavagna nera.&lt;/li&gt;&lt;li&gt;Supporto torcia per ambienti con scarsa illuminazione.&lt;/li&gt;&lt;li&gt;Interfaccia utente minimalista ottimizzata per l&apos;uso con una sola mano.&lt;/li&gt;&lt;/ul&gt;</translation>
-    </message>
-    <message>
         <source>Released under the &lt;a href=&apos;https://github.com/fravaccaro/harbour-tarkka/blob/main/LICENSE&apos;&gt;GNU GPLv3&lt;/a&gt; license.</source>
         <translation>Rilasciato sotto licenza &lt;a href=&apos;https://github.com/fravaccaro/harbour-tarkka/blob/main/LICENSE&apos;&gt;GNU GPLv3&lt;/a&gt;.</translation>
     </message>
-</context>
-<context>
-    <name>MainPage</name>
     <message>
-        <source>About</source>
-        <translation>Informazioni</translation>
+        <source>Smooth digital zoom up to 4x.</source>
+        <translation>Zoom digitale fluido fino a 4x.</translation>
     </message>
     <message>
-        <source>Filter</source>
-        <translation>Filtro</translation>
+        <source>Torch support for low-light environments.</source>
+        <translation>Supporto torcia per ambienti con scarsa illuminazione.</translation>
     </message>
     <message>
-        <source>None</source>
-        <translation>Nessuno</translation>
+        <source>Minimalist UI optimized for one-handed use.</source>
+        <translation>Interfaccia utente minimalista ottimizzata per l&amp;apos;uso con una sola mano.</translation>
     </message>
     <message>
-        <source>Black and white</source>
-        <translation>Bianco e nero</translation>
+        <source>Grayscale</source>
+        <translation>Scala di grigi</translation>
     </message>
     <message>
-        <source>Negative</source>
-        <translation>Negativo</translation>
+        <source>Solarize</source>
+        <translation>Solarizza</translation>
     </message>
     <message>
         <source>Whiteboard</source>
@@ -107,8 +100,63 @@
         <translation>Lavagna nera</translation>
     </message>
     <message>
+        <source>Specialized filters:</source>
+        <translation>Filtri specializzati:</translation>
+    </message>
+    <message>
+        <source>Brightness adjustment.</source>
+        <translation>Regolazione della luminosità.</translation>
+    </message>
+    <message>
+        <source>Contrast adjustment.</source>
+        <translation>Regolazione del contrasto.</translation>
+    </message>
+    <message>
+        <source>Negative</source>
+        <translation>Negativo</translation>
+    </message>
+</context>
+<context>
+    <name>MainPage</name>
+    <message>
+        <source>About</source>
+        <translation>Informazioni</translation>
+    </message>
+    <message>
+        <source>Brightness</source>
+        <translation>Luminosità</translation>
+    </message>
+    <message>
+        <source>Contrast</source>
+        <translation>Contrasto</translation>
+    </message>
+    <message>
+        <source>Filters</source>
+        <translation>Filtri</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Nessuno</translation>
+    </message>
+    <message>
+        <source>Grayscale</source>
+        <translation>Scala di grigi</translation>
+    </message>
+    <message>
+        <source>Negative</source>
+        <translation>Negativo</translation>
+    </message>
+    <message>
         <source>Solarize</source>
         <translation>Solarizza</translation>
+    </message>
+    <message>
+        <source>Whiteboard</source>
+        <translation>Lavagna bianca</translation>
+    </message>
+    <message>
+        <source>Blackboard</source>
+        <translation>Lavagna nera</translation>
     </message>
 </context>
 </TS>

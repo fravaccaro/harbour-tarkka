@@ -20,7 +20,12 @@ CONFIG += sailfishapp
 SOURCES += src/harbour-tarkka.cpp
 
 DISTFILES += qml/harbour-tarkka.qml \
+    qml/components/CameraControls.qml \
+    qml/components/CameraView.qml \
     qml/components/Label.qml \
+    qml/components/MenuUI.qml \
+    qml/components/OverlayButton.qml \
+    qml/components/UIButton.qml \
     qml/cover/CoverPage.qml \
     qml/components/*.qml \
     qml/pages/*.qml \

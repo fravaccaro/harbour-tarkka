@@ -56,7 +56,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Request a new language or contribute to existing languages on the Transifex project page.</source>
+        <source>Request a new language or contribute to existing languages.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -72,30 +72,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;ul&gt;&lt;li&gt;Smooth digital zoom up to 4x.&lt;/li&gt;&lt;li&gt;Specialized filters: Negative, Black and white, Solarize, Whiteboard, and Blackboard.&lt;/li&gt;&lt;li&gt;Torch support for low-light environments.&lt;/li&gt;&lt;li&gt;Minimalist UI optimized for one-handed use.&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MainPage</name>
-    <message>
-        <source>About</source>
+        <source>Smooth digital zoom up to 4x.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Filter</source>
+        <source>Torch support for low-light environments.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>None</source>
+        <source>Minimalist UI optimized for one-handed use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Black and white</source>
+        <source>Grayscale</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Negative</source>
+        <source>Solarize</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -107,7 +100,62 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Specialized filters:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Brightness adjustment.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contrast adjustment.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Negative</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainPage</name>
+    <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Brightness</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contrast</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Grayscale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Negative</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Solarize</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Whiteboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blackboard</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

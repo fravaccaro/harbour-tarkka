@@ -75,7 +75,19 @@ Page {
                 }
 
                 LabelText {
-                    text: qsTr("<ul><li>Smooth digital zoom up to 4x.</li><li>Specialized filters: Negative, Black and white, Solarize, Whiteboard, and Blackboard.</li><li>Torch support for low-light environments.</li><li>Minimalist UI optimized for one-handed use.</li></ul>")
+                    text: "<ul>" +
+                    "<li>" + qsTr("Smooth digital zoom up to 4x.") + "</li>" +
+                    "<li>" + qsTr("Specialized filters:") + " " +
+                        qsTr("Negative") + ", " +
+                        qsTr("Grayscale") + ", " +
+                        qsTr("Solarize") + ", " +
+                        qsTr("Whiteboard") + ", " +
+                        qsTr("Blackboard") + ".</li>" +
+                    "<li>" + qsTr("Brightness adjustment.") + "</li>" +
+                    "<li>" + qsTr("Contrast adjustment.") + "</li>" +
+                    "<li>" + qsTr("Torch support for low-light environments.") + "</li>" +
+                    "<li>" + qsTr("Minimalist UI optimized for one-handed use.") + "</li>" +
+                    "</ul>"
                 }
 
                 SectionHeader {
@@ -133,7 +145,7 @@ Page {
                 }
 
                 LabelText {
-                    text: qsTr("Request a new language or contribute to existing languages on the Transifex project page.")
+                    text: qsTr("Request a new language or contribute to existing languages.")
                 }
 
                 LabelSpacer {
@@ -142,7 +154,7 @@ Page {
                 Button {
                     anchors.horizontalCenter: parent.horizontalCenter
                     text: qsTr("Transifex")
-                    onClicked: Qt.openUrlExternally("https://www.transifex.com/fravaccaro/ui-themer")
+                    onClicked: Qt.openUrlExternally("https://explore.transifex.com/fravaccaro/tarkka/")
                 }
 
                 LabelSpacer {
