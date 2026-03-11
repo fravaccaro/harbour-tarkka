@@ -3,7 +3,7 @@
 - Added contrast settings
 - Added brightness settings
 - Added front camera support
-- Fixed Transifex URL.
+- Fixed Transifex URL
 
 * Sun Mar 8 2026 0.2.1
 - Properly suspend camera hardware when not in use

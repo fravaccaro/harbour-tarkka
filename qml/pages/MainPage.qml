@@ -19,8 +19,11 @@ Page {
     allowedOrientations: Orientation.Portrait
     // What happens when the page is changed
     onStatusChanged: {
-        if (status === PageStatus.Inactive || status === PageStatus.Deactivating)
+        if (status === PageStatus.Inactive || status === PageStatus.Deactivating) {
             camera.cameraState = Camera.UnloadedState;
+            camera.flash.mode = Camera.FlashOff;
+            camera.isFlashOn = false;
+    }
         else if (status === PageStatus.Active && !mainPage.isFrozen)
             camera.cameraState = Camera.ActiveState;
     }
@@ -260,8 +263,10 @@ Page {
                     icon.height: Theme.iconSizeMedium
                     icon.source: "image://theme/icon-m-sync"
                     onClicked: {
-                        camera.position = (camera.position === Camera.BackFace) ? Camera.FrontFace : Camera.BackFace;
+                        camera.flash.mode = Camera.FlashOff;
+                        camera.isFlashOn = false;
                         zoomSlider.value = 1;
+                        camera.position = (camera.position === Camera.BackFace) ? Camera.FrontFace : Camera.BackFace;
                     }
                 }
 
