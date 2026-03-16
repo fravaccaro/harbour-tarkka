@@ -22,6 +22,7 @@ SOURCES += src/harbour-tarkka.cpp
 DISTFILES += qml/harbour-tarkka.qml \
     qml/components/CameraControls.qml \
     qml/components/CameraView.qml \
+    qml/components/GlowingButton.qml \
     qml/components/Label.qml \
     qml/components/MenuUI.qml \
     qml/components/OverlayButton.qml \

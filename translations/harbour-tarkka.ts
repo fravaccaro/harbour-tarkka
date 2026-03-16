@@ -52,10 +52,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Italian</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Request a new language or contribute to existing languages.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -115,6 +111,38 @@
         <source>Negative</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Yellow on black</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black on yellow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yellow on blue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blue on yellow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>White on blue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blue on white</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Red on black</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black on red</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainPage</name>
@@ -156,6 +184,38 @@
     </message>
     <message>
         <source>Blackboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yellow on black</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black on yellow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yellow on blue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blue on yellow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>White on blue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blue on white</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Red on black</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black on red</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

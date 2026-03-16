@@ -1,3 +1,7 @@
+* Mon Mar 16 0.3.1
+- Fixed freeze frame zoom
+- Added Swedish translation (thanks to eson)
+
 * Wed Mar 11 0.3
 - Fixed filters for other Xperia devices
 - Added contrast settings

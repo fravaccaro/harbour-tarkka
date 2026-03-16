@@ -75,19 +75,7 @@ Page {
                 }
 
                 LabelText {
-                    text: "<ul>" +
-                    "<li>" + qsTr("Smooth digital zoom up to 4x.") + "</li>" +
-                    "<li>" + qsTr("Specialized filters:") + " " +
-                        qsTr("Negative") + ", " +
-                        qsTr("Grayscale") + ", " +
-                        qsTr("Solarize") + ", " +
-                        qsTr("Whiteboard") + ", " +
-                        qsTr("Blackboard") + ".</li>" +
-                    "<li>" + qsTr("Brightness adjustment.") + "</li>" +
-                    "<li>" + qsTr("Contrast adjustment.") + "</li>" +
-                    "<li>" + qsTr("Torch support for low-light environments.") + "</li>" +
-                    "<li>" + qsTr("Minimalist UI optimized for one-handed use.") + "</li>" +
-                    "</ul>"
+                    text: "<ul>" + "<li>" + qsTr("Smooth digital zoom up to 4x.") + "</li>" + "<li>" + qsTr("Specialized filters:") + " " + qsTr("Negative") + ", " + qsTr("Grayscale") + ", " + qsTr("Solarize") + ", " + qsTr("Whiteboard") + ", " + qsTr("Blackboard") + ", " + qsTr("Yellow on black") + ", " + qsTr("Black on yellow") + ", " + qsTr("Yellow on blue") + ", " + qsTr("Blue on yellow") + ", " + qsTr("White on blue") + ", " + qsTr("Blue on white") + ", " + qsTr("Red on black") + ", " + qsTr("Black on red") + ".</li>" + "<li>" + qsTr("Brightness adjustment.") + "</li>" + "<li>" + qsTr("Contrast adjustment.") + "</li>" + "<li>" + qsTr("Torch support for low-light environments.") + "</li>" + "<li>" + qsTr("Minimalist UI optimized for one-handed use.") + "</li>" + "</ul>"
                 }
 
                 SectionHeader {
@@ -140,8 +128,13 @@ Page {
                 }
 
                 DetailItem {
-                    label: qsTr("Italian")
+                    label: "Italiano"
                     value: "fravaccaro"
+                }
+
+                DetailItem {
+                    label: "Svenska"
+                    value: "Åke Engelbrektson"
                 }
 
                 LabelText {

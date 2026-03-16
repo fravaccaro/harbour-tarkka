@@ -12,6 +12,7 @@ Page {
     property real brightnessValue: 1
     property real contrastValue: 1
     property alias cameraObj: camera
+
     function syncCameraSettings() {
         camera.flash.mode = camera.isFlashOn ? Camera.FlashTorch : Camera.FlashOff;
     }
@@ -23,8 +24,15 @@ Page {
             camera.cameraState = Camera.UnloadedState;
             camera.flash.mode = Camera.FlashOff;
             camera.isFlashOn = false;
+        } else if (status === PageStatus.Active && !mainPage.isFrozen) {
+            camera.cameraState = Camera.ActiveState;
+        }
     }
-        else if (status === PageStatus.Active && !mainPage.isFrozen)
+    Component.onCompleted: {
+        if (!Qt.application.active)
+            // Start the countdown if the app is already in background
+            bootForceSwitchTimer.start();
+        else if (mainPage.status === PageStatus.Active && !mainPage.isFrozen)
             camera.cameraState = Camera.ActiveState;
     }
 
@@ -101,6 +109,7 @@ Page {
                 anchors.fill: parent
                 visible: !mainPage.isFrozen
                 fragmentShader: "
+
                     varying highp vec2 qt_TexCoord0;
                     uniform sampler2D source;
                     uniform lowp float qt_Opacity;
@@ -109,11 +118,36 @@ Page {
                     uniform lowp float contrast;
                     void main() {
                         highp vec4 color = texture2D(source, qt_TexCoord0);
+
+                        // Calcoliamo quanto è luminoso il pixel originale (da 0.0 a 1.0)
+                        highp float gray = dot(color.rgb, vec3(0.299, 0.587, 0.114));
+
+                        // 0 is dark (text), 1 is light (background)
+                        highp float stepVal = smoothstep(0.4, 0.6, gray);
+
                         if (filterType == 1) { highp float gray = dot(color.rgb, vec3(0.299, 0.587, 0.114)); color.rgb = vec3(gray); } // Grayscale
                         else if (filterType == 2) { color.rgb = 1.0 - color.rgb; } // Negative
                         else if (filterType == 3) { if (color.r > 0.5) color.r = 1.0 - color.r; if (color.g > 0.5) color.g = 1.0 - color.g; if (color.b > 0.5) color.b = 1.0 - color.b; } // Solarize
                         else if (filterType == 4) { highp float gray = dot(color.rgb, vec3(0.299, 0.587, 0.114)); color.rgb = vec3(smoothstep(0.3, 0.6, gray)); } // Whiteboard
                         else if (filterType == 5) { highp float gray = dot(color.rgb, vec3(0.299, 0.587, 0.114)); color.rgb = vec3(1.0 - smoothstep(0.3, 0.6, gray)); } // Blackboard
+                        // 6. Yellow on black
+                        else if (filterType == 6) { color.rgb = mix(vec3(1.0, 1.0, 0.0), vec3(0.0, 0.0, 0.0), stepVal); }
+                        // 7. Black on yellow
+                        else if (filterType == 7) { color.rgb = mix(vec3(0.0, 0.0, 0.0), vec3(1.0, 1.0, 0.0), stepVal); }
+                        // 8. Yellow on blue (uso un blu 0.8 per non stancare la vista)
+                        else if (filterType == 8) { color.rgb = mix(vec3(1.0, 1.0, 0.0), vec3(0.0, 0.0, 0.8), stepVal); }
+                        // 9. Blue on yellow
+                        else if (filterType == 9) { color.rgb = mix(vec3(0.0, 0.0, 0.8), vec3(1.0, 1.0, 0.0), stepVal); }
+                        // 10. White on blue
+                        else if (filterType == 10) { color.rgb = mix(vec3(1.0, 1.0, 1.0), vec3(0.0, 0.0, 0.8), stepVal); }
+                        // 11. Blue on white
+                        else if (filterType == 11) { color.rgb = mix(vec3(0.0, 0.0, 0.8), vec3(1.0, 1.0, 1.0), stepVal); }
+                        // 12. Red on black
+                        else if (filterType == 12) { color.rgb = mix(vec3(1.0, 0.0, 0.0), vec3(0.0, 0.0, 0.0), stepVal); }
+                        // 13. Black on red
+                        else if (filterType == 13) { color.rgb = mix(vec3(0.0, 0.0, 0.0), vec3(1.0, 0.0, 0.0), stepVal); }
+
+
                         color.rgb *= brightness; // Brightness
                         color.rgb = (color.rgb - 0.5) * contrast + 0.5; // Contrast
                         gl_FragColor = color * qt_Opacity;
@@ -336,9 +370,9 @@ Page {
                         onClicked: {
                             if (mainPage.isFrozen) {
                                 mainPage.isFrozen = false;
-                                frozenView.scale = 1;                 // Riporta l'immagine alla grandezza originale
-                                            imageFlickable.contentX = 0;          // Centra l'asse X
-                                            imageFlickable.contentY = 0;          // Centra l'asse Y
+                                frozenView.scale = 1; // Riporta l'immagine alla grandezza originale
+                                imageFlickable.contentX = 0; // Centra l'asse X
+                                imageFlickable.contentY = 0; // Centra l'asse Y
                                 camera.cameraState = Camera.ActiveState;
                             } else {
                                 shaderView.grabToImage(function(result) {
@@ -434,6 +468,46 @@ Page {
                     ListElement {
                         name: qsTr("Blackboard")
                         filterType: 5
+                    }
+
+                    ListElement {
+                        name: qsTr("Yellow on black")
+                        filterType: 6
+                    }
+
+                    ListElement {
+                        name: qsTr("Black on yellow")
+                        filterType: 7
+                    }
+
+                    ListElement {
+                        name: qsTr("Yellow on blue")
+                        filterType: 8
+                    }
+
+                    ListElement {
+                        name: qsTr("Blue on yellow")
+                        filterType: 9
+                    }
+
+                    ListElement {
+                        name: qsTr("White on blue")
+                        filterType: 10
+                    }
+
+                    ListElement {
+                        name: qsTr("Blue on white")
+                        filterType: 11
+                    }
+
+                    ListElement {
+                        name: qsTr("Red on black")
+                        filterType: 12
+                    }
+
+                    ListElement {
+                        name: qsTr("Black on red")
+                        filterType: 13
                     }
 
                 }
@@ -549,6 +623,7 @@ Page {
 
     Timer {
         id: bootForceSwitchTimer
+
         interval: 1000 // 1 second
         repeat: false
         onTriggered: {
@@ -558,15 +633,6 @@ Page {
                 camera.cameraState = Camera.UnloadedState;
                 camera.isFlashOn = false;
             }
-        }
-    }
-
-    Component.onCompleted: {
-        if (!Qt.application.active) {
-            // Start the countdown if the app is already in background
-            bootForceSwitchTimer.start();
-        } else if (mainPage.status === PageStatus.Active && !mainPage.isFrozen) {
-            camera.cameraState = Camera.ActiveState;
         }
     }
 
