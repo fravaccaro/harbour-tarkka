@@ -47,7 +47,7 @@ Page {
                     anchors.horizontalCenter: parent.horizontalCenter
                     color: Theme.highlightColor
                     font.pixelSize: Theme.fontSizeSmall
-                    text: "Tarkka 0.3"
+                    text: "Tarkka 0.3.1"
                 }
 
                 LabelText {

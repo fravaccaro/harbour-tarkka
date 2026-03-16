@@ -6,7 +6,7 @@ Turn your Sailfish device into a digital magnifying glass. Designed for simplici
 <br style="clear: both; height:5px;" />
 
 * Smooth digital zoom up to 4x.
-* Specialized filters: Negative, Grayscale, Whiteboard, and Blackboard.
+* Specialized filters: Negative, Grayscale, Whiteboard, Blackboard, Yellow on black, Black on yellow, Yellow on blue, Blue on yellow, White on blue, Blue on white, Red on black, Black on red.
 * Brightness adjustment.
 * Contrast adjustment.
 * Torch support for low-light environments.
