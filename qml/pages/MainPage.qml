@@ -336,6 +336,9 @@ Page {
                         onClicked: {
                             if (mainPage.isFrozen) {
                                 mainPage.isFrozen = false;
+                                frozenView.scale = 1;                 // Riporta l'immagine alla grandezza originale
+                                            imageFlickable.contentX = 0;          // Centra l'asse X
+                                            imageFlickable.contentY = 0;          // Centra l'asse Y
                                 camera.cameraState = Camera.ActiveState;
                             } else {
                                 shaderView.grabToImage(function(result) {
@@ -465,7 +468,6 @@ Page {
                     anchors.left: parent.left
                     anchors.right: resetBrightness.left
                     anchors.verticalCenter: parent.verticalCenter
-                    valueText: value.toFixed(1)
                     minimumValue: 0.5
                     maximumValue: 2
                     value: brightnessValue
@@ -500,7 +502,6 @@ Page {
                     anchors.left: parent.left
                     anchors.right: resetContrast.left
                     anchors.verticalCenter: parent.verticalCenter
-                    valueText: value.toFixed(1)
                     minimumValue: 0.5
                     maximumValue: 2
                     value: contrastValue
