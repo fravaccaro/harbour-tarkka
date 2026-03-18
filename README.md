@@ -1,5 +1,5 @@
 # Tarkka
-Turn your Sailfish device into a digital magnifying glass. Designed for simplicity and accessibility. Available on [OpenRepos](https://openrepos.net/content/fravaccaro/tarkka-magnifier).
+Turn your Sailfish OS device into a digital magnifying glass. Designed for simplicity and accessibility. Available on [OpenRepos](https://openrepos.net/content/fravaccaro/tarkka-magnifier).
 
 ## Features
 <a href="screenshots/grayscale.png"><img width="25%" style="float: left;" src="screenshots/grayscale.png" /></a> <a href="screenshots/brightness.png"><img width="25%" style="float: left;" src="screenshots/brightness.png" /></a>

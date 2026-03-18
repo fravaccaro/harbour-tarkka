@@ -113,42 +113,42 @@
     </message>
     <message>
         <source>Yellow on black</source>
-        <translation type="unfinished"></translation>
+        <translation>Gul på svart</translation>
     </message>
     <message>
         <source>Black on yellow</source>
-        <translation type="unfinished"></translation>
+        <translation>Svart på gul</translation>
     </message>
     <message>
         <source>Yellow on blue</source>
-        <translation type="unfinished"></translation>
+        <translation>Gul på blå</translation>
     </message>
     <message>
         <source>Blue on yellow</source>
-        <translation type="unfinished"></translation>
+        <translation>Blå på gul</translation>
     </message>
     <message>
         <source>White on blue</source>
-        <translation type="unfinished"></translation>
+        <translation>Vit på blå</translation>
     </message>
     <message>
         <source>Blue on white</source>
-        <translation type="unfinished"></translation>
+        <translation>blå på vit</translation>
     </message>
     <message>
         <source>Red on black</source>
-        <translation type="unfinished"></translation>
+        <translation>Röd på svart</translation>
     </message>
     <message>
         <source>Black on red</source>
-        <translation type="unfinished"></translation>
+        <translation>Svart på röd</translation>
     </message>
 </context>
 <context>
     <name>MainPage</name>
     <message>
-        <source>About</source>
-        <translation>Om</translation>
+        <source>Filters</source>
+        <translation>Filter</translation>
     </message>
     <message>
         <source>Brightness</source>
@@ -159,8 +159,8 @@
         <translation>Kontrast</translation>
     </message>
     <message>
-        <source>Filters</source>
-        <translation>Filter</translation>
+        <source>About</source>
+        <translation>Om</translation>
     </message>
     <message>
         <source>None</source>
@@ -188,35 +188,35 @@
     </message>
     <message>
         <source>Yellow on black</source>
-        <translation type="unfinished"></translation>
+        <translation>Gul på svart</translation>
     </message>
     <message>
         <source>Black on yellow</source>
-        <translation type="unfinished"></translation>
+        <translation>Svart på gul</translation>
     </message>
     <message>
         <source>Yellow on blue</source>
-        <translation type="unfinished"></translation>
+        <translation>Gul på blå</translation>
     </message>
     <message>
         <source>Blue on yellow</source>
-        <translation type="unfinished"></translation>
+        <translation>Blå på gul</translation>
     </message>
     <message>
         <source>White on blue</source>
-        <translation type="unfinished"></translation>
+        <translation>Vit på blå</translation>
     </message>
     <message>
         <source>Blue on white</source>
-        <translation type="unfinished"></translation>
+        <translation>Blå på vit</translation>
     </message>
     <message>
         <source>Red on black</source>
-        <translation type="unfinished"></translation>
+        <translation>Röd på svart</translation>
     </message>
     <message>
         <source>Black on red</source>
-        <translation type="unfinished"></translation>
+        <translation>Svart på röd</translation>
     </message>
 </context>
 </TS>
