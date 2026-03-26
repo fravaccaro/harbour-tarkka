@@ -351,7 +351,7 @@ Page {
             anchors.bottom: parent.bottom
             width: parent.width
             height: Theme.itemSizeLarge + (Theme.paddingMedium * 2)
-            color: Theme.rgba(Theme.overlayBackgroundColor, 0.6)
+            color: Theme.rgba(Theme.overlayBackgroundColor, 0.7)
             opacity: mainPage.isFrozen ? 0 : 1
 
             OverlayButton {
@@ -364,7 +364,7 @@ Page {
                     if (viewMode === 2)
                         return "image://theme/icon-m-light-contrast";
 
-                    return "image://theme/icon-m-levels";
+                    return "image://theme/icon-camera-filter-off";
                 }
             }
 

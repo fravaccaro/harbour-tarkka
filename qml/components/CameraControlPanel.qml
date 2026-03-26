@@ -32,7 +32,7 @@ Column {
             anchors.leftMargin: Theme.horizontalPageMargin
             icon.width: Theme.iconSizeMedium
             icon.height: Theme.iconSizeMedium
-            icon.source: "image://theme/icon-m-sync"
+            icon.source: "image://theme/icon-camera-switch"
             onClicked: {
                 root.cameraObj.flash.mode = Camera.FlashOff;
                 root.cameraObj.isFlashOn = false;
@@ -99,7 +99,7 @@ Column {
             anchors.rightMargin: Theme.horizontalPageMargin
             icon.width: Theme.iconSizeMedium
             icon.height: Theme.iconSizeMedium
-            icon.source: "image://theme/icon-m-sd-card"
+            icon.source: "image://theme/icon-m-downloads"
             onClicked: {
                 root.saveClicked();
             }
@@ -153,7 +153,7 @@ Column {
                 visible: !root.isFrozen
                 enabled: visible
                 anchors.centerIn: parent
-                icon.source: "image://theme/icon-camera-shutter"
+                icon.source: "image://theme/icon-camera-shutter-release"
                 onClicked: root.freezeClicked()
             }
 

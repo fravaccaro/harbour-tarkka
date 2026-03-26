@@ -2,7 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 IconButton {
-    id: control
+    id: root
 
     property real circleBorderWidth: 0
     property color circleBorderColor: "transparent"
@@ -12,20 +12,21 @@ IconButton {
     icon.width: Theme.iconSizeLarge
     icon.height: Theme.iconSizeLarge
     anchors.verticalCenter: parent.verticalCenter
-    icon.color: pressed ? Theme.lightSecondaryColor : Theme.lightPrimaryColor
+    icon.color: pressed ? Theme.secondaryColor : Theme.primaryColor
+    icon.scale: pressed ? 0.9 : 1
     opacity: enabled ? 1 : 0.3
 
     Rectangle {
         anchors.centerIn: parent
-        width: control.backgroundSize
+        width: root.backgroundSize
         height: width
         radius: width / 2
-        color: Theme.darkPrimaryColor
-        border.width: control.circleBorderWidth
-        border.color: control.circleBorderColor
+        color: Theme.rgba(Theme.overlayBackgroundColor, 0.7)
+        opacity: root.down ? 0.8 : 0.7
+        border.width: root.circleBorderWidth
+        border.color: root.circleBorderColor
         z: -1
-        opacity: control.pressed ? 0.6 : 0.4
-        scale: control.pressed ? 1.05 : 1
+        scale: root.pressed ? 1.05 : 1
 
         Behavior on opacity {
             NumberAnimation {
@@ -40,6 +41,14 @@ IconButton {
                 easing.type: Easing.InOutQuad
             }
 
+        }
+
+    }
+
+    Behavior on icon.scale {
+        NumberAnimation {
+            duration: 150
+            easing.type: Easing.InOutQuad
         }
 
     }

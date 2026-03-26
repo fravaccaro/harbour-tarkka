@@ -17,7 +17,7 @@ Slider {
         id: customLabel
 
         text: root.customLabelText
-        color: root.down ? Theme.highlightColor : Theme.lightPrimaryColor
+        color: root.down ? Theme.highlightColor : Theme.primaryColor
         font.pixelSize: Theme.fontSizeExtraSmall
 
         anchors {
@@ -32,8 +32,8 @@ Slider {
 
         z: -1
         radius: height / 2
-        color: Theme.darkPrimaryColor
-        opacity: root.down ? 0.6 : 0.4
+        color: Theme.rgba(Theme.overlayBackgroundColor, 0.7)
+        opacity: root.down ? 0.8 : 0.7
         scale: root.down ? 1.05 : 1
 
         anchors {

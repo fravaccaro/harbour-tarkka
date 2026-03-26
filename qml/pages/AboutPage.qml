@@ -24,6 +24,13 @@ Page {
             }
 
             Column {
+                // Label {
+                //    anchors.horizontalCenter: parent.horizontalCenter
+                //    color: Theme.highlightColor
+                //    font.pixelSize: Theme.fontSizeSmall
+                //    text: "Tarkka 0.3.1"
+                //  }
+
                 width: parent.width
                 spacing: Theme.paddingMedium
 
@@ -43,11 +50,7 @@ Page {
 
                 }
 
-                Label {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    color: Theme.highlightColor
-                    font.pixelSize: Theme.fontSizeSmall
-                    text: "Tarkka 0.3.1"
+                LabelSpacer {
                 }
 
                 LabelText {
