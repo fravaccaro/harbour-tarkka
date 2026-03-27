@@ -8,4 +8,4 @@ Name=Tarkka
 [X-Sailjail]
 OrganizationName=org.harbour-tarkka
 ApplicationName=harbour-tarkka
-Permissions=Camera;Pictures;Sharing
+Permissions=Camera;Pictures

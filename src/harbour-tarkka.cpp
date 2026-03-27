@@ -22,12 +22,6 @@ int main(int argc, char *argv[])
     // Ask for the standard Cache folder (XDG_CACHE_HOME) 
     QString cachePath = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
 
-    // If it doesn't exist, create it
-    QDir dir(cachePath);
-    if (!dir.exists()) {
-        dir.mkpath(".");
-    }
-
     // Set "AppCachePath" and serve it to the QML
     view->rootContext()->setContextProperty("AppCachePath", cachePath);
 
