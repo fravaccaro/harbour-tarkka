@@ -347,7 +347,7 @@ Page {
             onShareClicked: {
                 if (mainPage.lastFreezeFrame) {
                     floatingControls.isSharing = true;
-                    var tempPath = "/tmp/tarkka_share_temp.png";
+                    var tempPath = AppCachePath + "/tarkka_share_temp.png";
                     var success = mainPage.lastFreezeFrame.saveToFile(tempPath);
                     console.log("Sharing: file://" + tempPath);
                     if (success) {

@@ -10,20 +10,30 @@
 
 int main(int argc, char *argv[])
 {
-    // 1. Inizializziamo l'app e la vista "manualmente" (come suggerito dai commenti dell'SDK)
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     QScopedPointer<QQuickView> view(SailfishApp::createView());
 
-    // 2. Chiediamo al sistema operativo dove si trova la cartella Immagini corretta
+    // Ask where the Pictures folder is
     QString picturesLocation = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
 
-    // 3. Creiamo la variabile "StandardPicturesPath" e la rendiamo visibile al QML
+    // Set "StandardPicturesPath" and serve it to the QML
     view->rootContext()->setContextProperty("StandardPicturesPath", picturesLocation);
 
-    // 4. Carichiamo il file QML principale e mostriamo la schermata
+    // Ask for the standard Cache folder (XDG_CACHE_HOME) 
+    QString cachePath = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
+
+    // If it doesn't exist, create it
+    QDir dir(cachePath);
+    if (!dir.exists()) {
+        dir.mkpath(".");
+    }
+
+    // Set "AppCachePath" and serve it to the QML
+    view->rootContext()->setContextProperty("AppCachePath", cachePath);
+
+
     view->setSource(SailfishApp::pathToMainQml());
     view->show();
 
-    // 5. Avviamo il "motore" dell'applicazione
     return app->exec();
 }
