@@ -1,3 +1,7 @@
+* Tue Apr 14 2026 0.5.1
+- Logic for finding the best ratio for the camera
+- Norwegian bokmål translation (thanks frankps)
+
 * Thu Mar 26 2026 0.5.0
 - UI icons updated
 - Improved visibility with light ambiances

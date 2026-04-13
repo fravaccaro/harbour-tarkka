@@ -57,6 +57,8 @@ Page {
     }
 
     function getBestResolution() {
+        // If the ratio is roughly the same (within the 0.1 tolerance bracket)
+
         // Wait for the camera hardware to be fully loaded
         if (camera.cameraStatus !== Camera.LoadedStatus && camera.cameraStatus !== Camera.ActiveStatus)
             return ;
@@ -78,8 +80,6 @@ Page {
         var maxAreaForBestRatio = 0;
         // Loop through resolutions
         for (var i = 0; i < supportedRes.length; i++) {
-            // If the ratio is roughly the same (within the 0.1 tolerance bracket)
-
             var res = supportedRes[i];
             var resRatio = Math.max(res.width, res.height) / Math.min(res.width, res.height);
             var difference = Math.abs(resRatio - screenRatio);
