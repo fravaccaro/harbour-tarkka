@@ -16,7 +16,8 @@ Page {
     property alias cameraObj: camera
     property var lastFreezeFrame
     property string savedImagePath
-    property var resolutionCache: ({})
+    property var resolutionCache: ({
+    })
 
     function funcCameraOff() {
         console.log("Camera off");
@@ -55,56 +56,48 @@ Page {
         }
     }
 
-function getBestResolution() {
+    function getBestResolution() {
         // Wait for the camera hardware to be fully loaded
-        if (camera.cameraStatus !== Camera.LoadedStatus && camera.cameraStatus !== Camera.ActiveStatus) {
-            return;
-        }
+        if (camera.cameraStatus !== Camera.LoadedStatus && camera.cameraStatus !== Camera.ActiveStatus)
+            return ;
 
         var camPosition = camera.position;
-
         // Check cache first
         if (resolutionCache[camPosition]) {
             camera.viewfinder.resolution = resolutionCache[camPosition];
             console.log("Loaded cached resolution for camera: " + resolutionCache[camPosition].width + "x" + resolutionCache[camPosition].height);
-            return;
+            return ;
         }
-
         var supportedRes = camera.supportedViewfinderResolutions();
-        if (supportedRes.length === 0) {
-            return; 
-        }
+        if (supportedRes.length === 0)
+            return ;
 
         var screenRatio = Math.max(Screen.width, Screen.height) / Math.min(Screen.width, Screen.height);
-        
         var bestRes = supportedRes[0];
         var smallestDifference = 9999;
         var maxAreaForBestRatio = 0;
-
         // Loop through resolutions
         for (var i = 0; i < supportedRes.length; i++) {
+            // If the ratio is roughly the same (within the 0.1 tolerance bracket)
+
             var res = supportedRes[i];
             var resRatio = Math.max(res.width, res.height) / Math.min(res.width, res.height);
             var difference = Math.abs(resRatio - screenRatio);
             var area = res.width * res.height; // Total pixels for quality checking
-
             // If this ratio is significantly closer to the screen ratio (outside the 0.1 tolerance)
             if (difference < smallestDifference - 0.1) {
                 smallestDifference = difference;
                 bestRes = res;
                 maxAreaForBestRatio = area;
-            } 
-            // If the ratio is roughly the same (within the 0.1 tolerance bracket)
-            else if (Math.abs(difference - smallestDifference) <= 0.1) {
+            } else if (Math.abs(difference - smallestDifference) <= 0.1) {
                 // Pick the one with the higher image quality!
                 if (area > maxAreaForBestRatio) {
-                    smallestDifference = difference; 
+                    smallestDifference = difference;
                     bestRes = res;
                     maxAreaForBestRatio = area;
                 }
             }
         }
-
         // Save to cache and apply
         resolutionCache[camPosition] = Qt.size(bestRes.width, bestRes.height);
         camera.viewfinder.resolution = resolutionCache[camPosition];
@@ -172,18 +165,16 @@ function getBestResolution() {
 
         captureMode: Camera.CaptureVideo
         cameraState: Camera.UnloadedState
-        //viewfinder.resolution: "1920x1080"
+        // Trigger our calculation when the camera backend is ready
+        onCameraStatusChanged: {
+            if (cameraStatus === Camera.LoadedStatus || cameraStatus === Camera.ActiveStatus)
+                mainPage.getBestResolution();
+
+        }
 
         focus {
             focusMode: Camera.FocusContinuous
         }
-
-// Trigger our calculation when the camera backend is ready
-        onCameraStatusChanged: {
-            if (cameraStatus === Camera.LoadedStatus || cameraStatus === Camera.ActiveStatus) {
-                mainPage.getBestResolution();
-            }
-            }
 
     }
 
