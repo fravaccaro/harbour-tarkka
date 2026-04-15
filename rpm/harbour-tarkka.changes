@@ -1,5 +1,6 @@
 * Wed Apr 15 2026 0.5.2
 - Use Jolla's C++ Class for reliably determine HW capabilities
+- Fixed translations not loading
 
 * Tue Apr 14 2026 0.5.1
 - Logic for finding the best ratio for the camera
