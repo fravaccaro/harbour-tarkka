@@ -1,3 +1,4 @@
+import CameraGallery 1.0
 import QtMultimedia 5.6
 import QtQuick 2.0
 import Sailfish.Silica 1.0
@@ -111,7 +112,7 @@ Column {
             icon.width: Theme.iconSizeMedium
             icon.height: Theme.iconSizeMedium
             enabled: root.cameraObj && root.cameraObj.cameraState === Camera.ActiveState && !root.isFrozen
-            visible: root.cameraObj && root.cameraObj.position === Camera.BackFace && !root.isFrozen
+            visible: CameraConfigs.supportedFlashModes.length > 0 && !root.isFrozen
             icon.source: root.cameraObj && root.cameraObj.isFlashOn ? "image://theme/icon-camera-flash-on" : "image://theme/icon-camera-flash-off"
             onClicked: {
                 root.flashClicked();

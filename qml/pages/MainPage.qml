@@ -1,4 +1,5 @@
 import "../components"
+import CameraGallery 1.0
 import Nemo.Notifications 1.0
 import QtMultimedia 5.6
 import QtQuick 2.0
@@ -57,23 +58,25 @@ Page {
     }
 
     function getBestResolution() {
-        // If the ratio is roughly the same (within the 0.1 tolerance bracket)
-
-        // Wait for the camera hardware to be fully loaded
-        if (camera.cameraStatus !== Camera.LoadedStatus && camera.cameraStatus !== Camera.ActiveStatus)
+        console.log(">>> call getBestResolution()");
+        var supportedRes = CameraConfigs.supportedViewfinderResolutions;
+        // List all supported resolutions
+        console.log("--- Supported resolutions: " + supportedRes.length + " ---");
+        for (var d = 0; d < supportedRes.length; d++) {
+            console.log("Resolution " + (d + 1) + ": " + supportedRes[d].width + "x" + supportedRes[d].height);
+        }
+        console.log("---------------------------------------");
+        if (supportedRes.length === 0) {
+            console.log("Cannot find any supported resolutions");
             return ;
-
+        }
         var camPosition = camera.position;
-        // Check cache first
+        // Check cache
         if (resolutionCache[camPosition]) {
             camera.viewfinder.resolution = resolutionCache[camPosition];
             console.log("Loaded cached resolution for camera: " + resolutionCache[camPosition].width + "x" + resolutionCache[camPosition].height);
             return ;
         }
-        var supportedRes = camera.supportedViewfinderResolutions();
-        if (supportedRes.length === 0)
-            return ;
-
         var screenRatio = Math.max(Screen.width, Screen.height) / Math.min(Screen.width, Screen.height);
         var bestRes = supportedRes[0];
         var smallestDifference = 9999;
@@ -109,6 +112,12 @@ Page {
     onStatusChanged: updateCameraState()
     onIsFrozenChanged: updateCameraState()
     Component.onCompleted: updateCameraState()
+
+    Binding {
+        target: CameraConfigs
+        property: "camera"
+        value: camera
+    }
 
     ShareAction {
         id: shareAction
@@ -165,17 +174,12 @@ Page {
 
         captureMode: Camera.CaptureVideo
         cameraState: Camera.UnloadedState
-        // Trigger our calculation when the camera backend is ready
+        // Trigger calculation when the camera backend is ready
         onCameraStatusChanged: {
             if (cameraStatus === Camera.LoadedStatus || cameraStatus === Camera.ActiveStatus)
                 mainPage.getBestResolution();
 
         }
-
-        focus {
-            focusMode: Camera.FocusContinuous
-        }
-
     }
 
     SilicaFlickable {
@@ -307,12 +311,26 @@ Page {
                         if (!mainPage.isFrozen) {
                             var pointX = mouse.x / width;
                             var pointY = mouse.y / height;
-                            camera.focus.focusMode = Camera.FocusMacro;
-                            camera.focus.focusPointMode = Camera.FocusPointCustom;
-                            camera.focus.customFocusPoint = Qt.point(pointX, pointY);
+                            // Check what harware supports
+                            var supportsCustomPoint = CameraConfigs.supportedFocusPointModes.indexOf(Camera.FocusPointCustom) !== -1;
+                            var supportsMacro = CameraConfigs.supportedFocusModes.indexOf(Camera.FocusMacro) !== -1;
+                            var supportsAuto = CameraConfigs.supportedFocusModes.indexOf(Camera.FocusAuto) !== -1;
+                            // Set focus point
+                            if (supportsCustomPoint) {
+                                camera.focus.focusPointMode = Camera.FocusPointCustom;
+                                camera.focus.customFocusPoint = Qt.point(pointX, pointY);
+                                console.log("Focus set on: " + pointX + ", " + pointY);
+                            } else {
+                                console.log("This device does not support tap to focus");
+                            }
+                            // Set best focus mode supported
+                            if (supportsMacro)
+                                camera.focus.focusMode = Camera.FocusMacro;
+                            else if (supportsAuto)
+                                camera.focus.focusMode = Camera.FocusAuto;
+                            // Start tap to focus
                             camera.searchAndLock();
                             focusIndicator.showAt(mouse.x, mouse.y);
-                            console.log("Tap to focus sent to " + pointX + ", " + pointY);
                         }
                     }
                     onDoubleClicked: {
