@@ -258,7 +258,7 @@ Page {
                     width: imageFlickable.width
                     height: imageFlickable.height
                     anchors.centerIn: parent
-                    fillMode: Image.PreserveAspectFit
+                    fillMode: Image.PreserveAspectCrop
                     transformOrigin: Item.Center
                     scale: 1
                 }
