@@ -5,23 +5,13 @@
 #include <QGuiApplication>
 #include <QQuickView>
 #include <QQmlContext>
-#include <QQmlEngine>
 #include <sailfishapp.h>
 #include <QStandardPaths>
-#include "cameraconfigs.h"
-
-static QObject *singletonFactory(QQmlEngine *, QJSEngine *)
-{
-    return new CameraConfigs;
-}
 
 int main(int argc, char *argv[])
 {
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     QScopedPointer<QQuickView> view(SailfishApp::createView());
-
-    // Register CameraConfigs
-    qmlRegisterSingletonType<CameraConfigs>("CameraGallery", 1, 0, "CameraConfigs", singletonFactory);
 
     // Ask where the Pictures folder is
     QString picturesLocation = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);

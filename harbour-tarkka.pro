@@ -12,18 +12,12 @@
 # The name of your application
 TARGET = harbour-tarkka
 
-QT += multimedia
-
 images.files = images/*.png
 images.path = $$PREFIX/share/$$TARGET/images
 
 CONFIG += sailfishapp
 
-HEADERS += \
-    src/cameraconfigs.h
-
 SOURCES += \
-    src/cameraconfigs.cpp \
     src/harbour-tarkka.cpp
 
 DISTFILES += qml/harbour-tarkka.qml \
