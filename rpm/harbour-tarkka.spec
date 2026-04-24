@@ -1,8 +1,8 @@
 Name:       harbour-tarkka
 
 Summary:    Tarkka
-Version:    0.5.2
-Release:    4
+Version:    0.5.3
+Release:    8
 License:    GPLv3
 URL:        https://github.com/fravaccaro/harbour-tarkka
 Source0:    %{name}-%{version}.tar.bz2
