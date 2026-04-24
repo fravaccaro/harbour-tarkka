@@ -56,46 +56,38 @@ Page {
         }
     }
 
-function getBestResolution() {
+    function getBestResolution() {
         // Wait for the camera hardware to be fully loaded
         if (camera.cameraStatus !== Camera.LoadedStatus && camera.cameraStatus !== Camera.ActiveStatus)
             return ;
 
         var camPosition = camera.position;
-        
         // Check cache first
         if (resolutionCache[camPosition]) {
             camera.viewfinder.resolution = resolutionCache[camPosition];
             console.log("Loaded cached resolution for camera: " + resolutionCache[camPosition].width + "x" + resolutionCache[camPosition].height);
             return ;
         }
-
         var supportedRes = camera.supportedViewfinderResolutions();
-        
         if (supportedRes.length === 0) {
             console.log("No supported resolutions found by the camera hardware.");
             return ;
         }
-
         console.log("==== SUPPORTED CAMERA RESOLUTIONS ====");
         for (var j = 0; j < supportedRes.length; j++) {
             console.log("Resolution [" + j + "]: " + supportedRes[j].width + " x " + supportedRes[j].height);
         }
         console.log("======================================");
-
         var screenRatio = Math.max(Screen.width, Screen.height) / Math.min(Screen.width, Screen.height);
         var bestRes = supportedRes[0];
         var smallestDifference = 9999;
         var maxAreaForBestRatio = 0;
-
         // Loop through resolutions to find the best match for the screen
         for (var i = 0; i < supportedRes.length; i++) {
             var res = supportedRes[i];
-            
             var resRatio = Math.max(res.width, res.height) / Math.min(res.width, res.height);
             var difference = Math.abs(resRatio - screenRatio);
             var area = res.width * res.height; // Total pixels for quality checking
-
             // If this ratio is significantly closer to the screen ratio (outside the 0.1 tolerance)
             if (difference < smallestDifference - 0.1) {
                 smallestDifference = difference;
@@ -110,7 +102,6 @@ function getBestResolution() {
                 }
             }
         }
-        
         // Save to cache and apply
         resolutionCache[camPosition] = Qt.size(bestRes.width, bestRes.height);
         camera.viewfinder.resolution = resolutionCache[camPosition];
@@ -225,32 +216,29 @@ function getBestResolution() {
 
         }
 
-Item {
-            anchors.fill: parent
-            clip: true
-
+        Item {
             // 1. Check screen ratio
             property real camRatio: {
                 var res = camera.viewfinder.resolution;
-                if (res.width > 0 && res.height > 0) {
+                if (res.width > 0 && res.height > 0)
                     return Math.min(res.width, res.height) / Math.max(res.width, res.height);
-                }
-                return 9/16; // Fallback
+
+                return 9 / 16; // Fallback
             }
             property real screenRatio: width / height
+
+            anchors.fill: parent
+            clip: true
 
             VideoOutput {
                 id: viewfinder
 
                 source: camera
                 anchors.centerIn: parent
-                
                 fillMode: VideoOutput.Stretch
-                
                 // We force the height and calculate the width needed to not deform the image on e.g. 21:9
                 width: (parent.screenRatio < parent.camRatio) ? parent.height * parent.camRatio : parent.width
                 height: (parent.screenRatio < parent.camRatio) ? parent.height : parent.width / parent.camRatio
-                
                 visible: false
             }
 
@@ -261,7 +249,6 @@ Item {
                 width: viewfinder.width
                 height: viewfinder.height
                 anchors.centerIn: parent
-
                 visible: !mainPage.isFrozen
                 filterType: mainPage.currentFilter
                 brightness: mainPage.brightnessValue
@@ -271,6 +258,7 @@ Item {
                     sourceItem: viewfinder
                     hideSource: true
                 }
+
             }
 
             Flickable {
@@ -288,14 +276,11 @@ Item {
 
                     width: imageFlickable.width
                     height: imageFlickable.height
-                    anchors.centerIn: parent
-                    
-                    // 5. Dato che la foto generata ha già l'aspetto corretto forzato dallo shader, il Crop ora funziona perfettamente.
                     fillMode: Image.PreserveAspectCrop
-                    
-                    transformOrigin: Item.Center
+                    transformOrigin: Item.TopLeft
                     scale: 1
                 }
+
             }
 
             PinchArea {
@@ -314,7 +299,26 @@ Item {
                 }
                 onPinchUpdated: {
                     if (mainPage.isFrozen) {
-                        floatingControls.frozenZoom = Math.max(1, Math.min(initialScale * pinch.scale, 4));
+                        // Calculate the new zoom level
+                        var newScale = Math.max(1, Math.min(initialScale * pinch.scale, 4));
+                        // We MUST calculate the expected limits manually right now.
+                        // If we rely on imageFlickable.contentWidth, it is too slow and locks the image.
+                        var targetContentWidth = imageFlickable.width * newScale;
+                        var targetContentHeight = imageFlickable.height * newScale;
+                        // Find the ratio of change for this exact frame
+                        var currentScale = frozenView.scale;
+                        var ratio = newScale / currentScale;
+                        // Force the visual scale and slider to update instantly
+                        frozenView.scale = newScale;
+                        floatingControls.frozenZoom = newScale;
+                        // Calculate where the Flickable needs to pan to stay under your fingers
+                        var absoluteX = (imageFlickable.contentX + pinch.center.x) * ratio;
+                        var absoluteY = (imageFlickable.contentY + pinch.center.y) * ratio;
+                        var newContentX = absoluteX - pinch.center.x;
+                        var newContentY = absoluteY - pinch.center.y;
+                        // Apply the movement using our manually calculated limits so it doesn't get stuck
+                        imageFlickable.contentX = Math.max(0, Math.min(newContentX, targetContentWidth - imageFlickable.width));
+                        imageFlickable.contentY = Math.max(0, Math.min(newContentY, targetContentHeight - imageFlickable.height));
                     } else if (camera.cameraState === Camera.ActiveState) {
                         var sensitivity = 10;
                         var delta = (pinch.scale - 1) * sensitivity;

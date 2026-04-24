@@ -1,3 +1,7 @@
+* Wed Apr 15 2026 0.5.3
+- Revert Jolla C++ usage.
+- Fix aspect ratio on tall devices (e.g. Xperia 10 III)
+
 * Wed Apr 15 2026 0.5.2
 - Use Jolla's C++ Class for reliably determine HW capabilities
 - Fixed translations not loading

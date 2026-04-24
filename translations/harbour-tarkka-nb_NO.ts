@@ -45,7 +45,7 @@
     </message>
     <message>
         <source>Thanks to piggz and his amazing work on &lt;a href=&apos;https://github.com/piggz/harbour-advanced-camera/tree/master&apos;&gt;Advancd Camera&lt;/a&gt;, exposing the filter logic helped me immensely.</source>
-        <translation>Takk til piggz og hans fantastiske arbeid med <a href='https://github.com/piggz/harbour-advanced-camera/tree/master'>Advanced Camera</a>; å få se hvordan filterlogikken var bygget opp hjalp meg mye.</translation>
+        <translation>Takk til piggz og hans fantastiske arbeid med &lt;a href=&apos;https://github.com/piggz/harbour-advanced-camera/tree/master&apos;&gt;Advancd Camera&lt;/a&gt; å få se hvordan filterlogikken var bygget opp hjalp meg mye.</translation>
     </message>
     <message>
         <source>Translations</source>
@@ -65,7 +65,7 @@
     </message>
     <message>
         <source>Released under the &lt;a href=&apos;https://github.com/fravaccaro/harbour-tarkka/blob/main/LICENSE&apos;&gt;GNU GPLv3&lt;/a&gt; license.</source>
-        <translation>Utgitt under lisensen <a href='https://github.com/fravaccaro/harbour-tarkka/blob/main/LICENSE'>GNU GPLv3</a>.</translation>
+        <translation>Utgitt under lisensen &lt;a href=&apos;https://github.com/fravaccaro/harbour-tarkka/blob/main/LICENSE&apos;&gt;GNU GPLv3&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Smooth digital zoom up to 4x.</source>
