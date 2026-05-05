@@ -1,10 +1,16 @@
 # Tarkka
 Turn your Sailfish OS device into a digital magnifying glass. Designed for simplicity and accessibility. Available on [OpenRepos](https://openrepos.net/content/fravaccaro/tarkka-magnifier).
 
+
+## Screenshots
+
+<p align="left">
+  <img src="screenshots/grayscale.png" alt="Grayscale" width="32%" />
+  <img src="screenshots/brightness.png" alt="Brightness" width="32%" />
+  <img src="screenshots/contrast.png" alt="Contrast" width="32%" />
+</p>
+
 ## Features
-<a href="screenshots/grayscale.png"><img width="25%" style="float: left;" src="screenshots/grayscale.png" /></a> <a href="screenshots/brightness.png"><img width="25%" style="float: left;" src="screenshots/brightness.png" /></a>
-<br style="clear: both; height:5px;" /> <a href="screenshots/contrast.png"><img width="25%" style="float: left;" src="screenshots/contrast.png" /></a>
-<br style="clear: both; height:5px;" />
 
 * Smooth digital zoom up to 4x.
 * Specialized filters: Negative, Grayscale, Whiteboard, Blackboard, Yellow on black, Black on yellow, Yellow on blue, Blue on yellow, White on blue, Blue on white, Red on black, Black on red.
