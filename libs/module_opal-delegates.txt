@@ -1,0 +1,43 @@
+# Store this file to keep track of packaged module versions.
+# It is not necessary to ship this in your app's final RPM package.
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: 2024-2026 Mirian Margiani
+# SPDX-FileCopyrightText: 2023 Peter G. (nephros)
+
+# Attribution using Opal.About:
+#   Opal attributions are automatically added to the About page.
+#   Make sure to use the latest version of Opal.About:
+#   https://github.com/Pretty-SFOS/opal-about/releases/latest
+#
+# Manual attribution:
+#   Mention at least name, license, and the attribution text
+#   on the About page of your app. Use the information below.
+
+module: Opal.Delegates (opal-delegates)
+version: 3.6.0 (git:546f261)
+description: This module provides list items for views, so you can concentrate on handling the data, not formatting the presentation.
+maintainers: Mirian Margiani
+attribution: 2024-2026 Mirian Margiani:2023 Peter G. (nephros)
+license: GPL-3.0-or-later
+sources: https://github.com/Pretty-SFOS/opal-delegates
+# Store this file to keep track of packaged module versions.
+# It is not necessary to ship this in your app's final RPM package.
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: 2024-2025 Mirian Margiani
+
+# Attribution using Opal.About:
+#   Opal attributions are automatically added to the About page.
+#   Make sure to use the latest version of Opal.About:
+#   https://github.com/Pretty-SFOS/opal-about/releases/latest
+#
+# Manual attribution:
+#   Mention at least name, license, and the attribution text
+#   on the About page of your app. Use the information below.
+
+module: Opal.DragDrop (opal-dragdrop)
+version: 1.0.6 (git:7de62b3)
+description: This module enables ordering lists by drag-and-drop with just a few lines of code.
+maintainers: Mirian Margiani
+attribution: 2024-2025 Mirian Margiani
+license: GPL-3.0-or-later
+sources: https://github.com/Pretty-SFOS/opal-dragdrop

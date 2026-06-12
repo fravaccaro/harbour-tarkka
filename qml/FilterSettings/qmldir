@@ -1,0 +1,2 @@
+module FilterSettings
+singleton FilterSettings 1.0 FilterSettings.qml

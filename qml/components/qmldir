@@ -1,0 +1,13 @@
+module components
+AboutLanguage 1.0 AboutLanguage.qml
+AboutTranslator 1.0 AboutTranslator.qml
+AdjustSlider 1.0 AdjustSlider.qml
+CameraControlPanel 1.0 CameraControlPanel.qml
+CameraFilterShader 1.0 CameraFilterShader.qml
+FilterList 1.0 FilterList.qml
+FocusRing 1.0 FocusRing.qml
+LabelSpacer 1.0 LabelSpacer.qml
+LabelText 1.0 LabelText.qml
+OverlayButton 1.0 OverlayButton.qml
+UIButton 1.0 UIButton.qml
+ZoomSlider 1.0 ZoomSlider.qml

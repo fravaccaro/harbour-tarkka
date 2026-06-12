@@ -1,3 +1,7 @@
+# >> macros
+%define __provides_exclude_from ^%{_datadir}/.*$
+# << macros
+
 Name:       harbour-tarkka
 
 Summary:    Tarkka
@@ -7,6 +11,7 @@ License:    GPLv3
 URL:        https://github.com/fravaccaro/harbour-tarkka
 Source0:    %{name}-%{version}.tar.bz2
 Requires:   sailfishsilica-qt5 >= 0.10.9
+Requires:   nemo-qml-plugin-configuration-qt5
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)

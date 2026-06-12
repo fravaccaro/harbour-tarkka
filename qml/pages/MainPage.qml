@@ -1,4 +1,5 @@
-import "../components"
+import "../components" 1.0
+import "../FilterSettings" 1.0
 import Nemo.Notifications 1.0
 import QtMultimedia 5.6
 import QtQuick 2.0
@@ -18,6 +19,15 @@ Page {
     property string savedImagePath
     property var resolutionCache: ({
     })
+
+    Connections {
+        target: FilterSettings
+
+        function onFilterVisibilityChanged() {
+            if (!FilterSettings.isVisible(mainPage.currentFilter))
+                mainPage.currentFilter = 0
+        }
+    }
 
     function funcCameraOff() {
         console.log("Camera off");
@@ -207,6 +217,17 @@ Page {
                 text: qsTr("Contrast")
                 onClicked: viewMode = 2
                 enabled: viewMode !== 2
+            }
+
+            MenuItem {
+                text: qsTr("Settings")
+                onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
+            }
+
+            MenuItem {
+                visible: true
+                text: qsTr("Support Tarkka")
+                onClicked: app.showSupportDialog()
             }
 
             MenuItem {

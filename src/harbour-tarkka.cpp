@@ -5,6 +5,7 @@
 #include <QGuiApplication>
 #include <QQuickView>
 #include <QQmlContext>
+#include <QQmlEngine>
 #include <sailfishapp.h>
 #include <QStandardPaths>
 
@@ -12,6 +13,9 @@ int main(int argc, char *argv[])
 {
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     QScopedPointer<QQuickView> view(SailfishApp::createView());
+
+    view->engine()->addImportPath(SailfishApp::pathTo(QStringLiteral("qml")).toString());
+    view->engine()->addImportPath(SailfishApp::pathTo(QStringLiteral("qml/modules")).toString());
 
     // Ask where the Pictures folder is
     QString picturesLocation = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
