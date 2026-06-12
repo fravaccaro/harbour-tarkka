@@ -1,0 +1,22 @@
+remote_theme: pmarsceill/just-the-docs
+title: Tarkka
+description: Digital magnifier for Sailfish OS
+baseurl: "/harbour-tarkka"
+exclude:
+  - icons/
+  - images/
+  - qml/
+  - rpm/
+  - src/
+  - libs/
+  - translations/
+  - "*.desktop"
+  - "*.pro"
+  - .sfdk/
+  - .github/
+
+url: "https://fravaccaro.github.io"
+search_enabled: false
+aux_links:
+  "Tarkka on GitHub":
+    - "//github.com/fravaccaro/harbour-tarkka"
