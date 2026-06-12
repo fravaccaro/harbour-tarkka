@@ -225,7 +225,7 @@ Page {
             }
 
             MenuItem {
-                visible: true
+                visible: false
                 text: qsTr("Support Tarkka")
                 onClicked: app.showSupportDialog()
             }
