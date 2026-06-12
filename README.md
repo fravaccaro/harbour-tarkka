@@ -40,4 +40,4 @@ Request a new language or contribute to existing languages on the [Transifex pro
 
 ## Credits
 
-Thanks to piggz and his amazing work on [Advanced Camera](https://github.com/piggz/harbour-advanced-camera), exposing the filter logic helped me immensely.
+Thanks to piggz and his amazing work on [Advanced Camera](https://github.com/piggz/harbour-advanced-camera), exposing the filter logic helped me immensely. 
