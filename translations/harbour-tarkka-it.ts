@@ -37,106 +37,106 @@
     </message>
     <message>
         <source>Smooth digital zoom up to 4x, specialized camera filters, brightness and contrast adjustment, torch support, and a minimalist UI optimized for one-handed use.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoom digitale fluido fino a 4x, filtri fotocamera specializzati, regolazione di luminosità e contrasto, supporto torcia e interfaccia minimalista ottimizzata per l&apos;uso con una mano.</translation>
     </message>
     <message>
         <source>Thanks to piggz and his amazing work on Advanced Camera, exposing the filter logic helped me immensely.</source>
-        <translation type="unfinished"></translation>
+        <translation>Grazie a piggz e al suo fantastico lavoro su Advanced Camera: l&apos;accesso alla logica dei filtri mi è stato di immenso aiuto.</translation>
     </message>
 </context>
 <context>
     <name>AskForSupport</name>
     <message>
         <source>Please take a moment to consider if you can contribute to this project in one way or another.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prenditi un momento per considerare se puoi contribuire a questo progetto in un modo o nell&apos;altro.</translation>
     </message>
 </context>
 <context>
     <name>DetailsDrawer</name>
     <message>
         <source>show less</source>
-        <translation type="unfinished"></translation>
+        <translation>mostra meno</translation>
     </message>
     <message>
         <source>show more</source>
-        <translation type="unfinished"></translation>
+        <translation>mostra di più</translation>
     </message>
 </context>
 <context>
     <name>ExternalUrlPage</name>
     <message>
         <source>Swipe left to preview.</source>
-        <translation type="unfinished"></translation>
+        <translation>Scorri a sinistra per l&apos;anteprima.</translation>
     </message>
     <message>
         <source>You are using a mobile data connection.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stai usando una connessione dati mobile.</translation>
     </message>
 </context>
 <context>
     <name>FilterSettings</name>
     <message>
         <source>Grayscale</source>
-        <translation type="unfinished">Scala di grigi</translation>
+        <translation>Scala di grigi</translation>
     </message>
     <message>
         <source>Negative</source>
-        <translation type="unfinished">Negativo</translation>
+        <translation>Negativo</translation>
     </message>
     <message>
         <source>Solarize</source>
-        <translation type="unfinished">Solarizza</translation>
+        <translation>Solarizza</translation>
     </message>
     <message>
         <source>Whiteboard</source>
-        <translation type="unfinished">Lavagna bianca</translation>
+        <translation>Lavagna bianca</translation>
     </message>
     <message>
         <source>Blackboard</source>
-        <translation type="unfinished">Lavagna nera</translation>
+        <translation>Lavagna nera</translation>
     </message>
     <message>
         <source>Yellow on black</source>
-        <translation type="unfinished">Giallo su nero</translation>
+        <translation>Giallo su nero</translation>
     </message>
     <message>
         <source>Black on yellow</source>
-        <translation type="unfinished">Nero su giallo</translation>
+        <translation>Nero su giallo</translation>
     </message>
     <message>
         <source>Yellow on blue</source>
-        <translation type="unfinished">Giallo su blu</translation>
+        <translation>Giallo su blu</translation>
     </message>
     <message>
         <source>Blue on yellow</source>
-        <translation type="unfinished">Blu su giallo</translation>
+        <translation>Blu su giallo</translation>
     </message>
     <message>
         <source>White on blue</source>
-        <translation type="unfinished">Bianco su blu</translation>
+        <translation>Bianco su blu</translation>
     </message>
     <message>
         <source>Blue on white</source>
-        <translation type="unfinished">Blu su bianco</translation>
+        <translation>Blu su bianco</translation>
     </message>
     <message>
         <source>Red on black</source>
-        <translation type="unfinished">Rosso su nero</translation>
+        <translation>Rosso su nero</translation>
     </message>
     <message>
         <source>Black on red</source>
-        <translation type="unfinished">Nero su rosso</translation>
+        <translation>Nero su rosso</translation>
     </message>
     <message>
         <source>No filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessun filtro</translation>
     </message>
 </context>
 <context>
     <name>LicenseListPart</name>
     <message>
         <source>License text</source>
-        <translation type="unfinished"></translation>
+        <translation>Testo della licenza</translation>
     </message>
 </context>
 <context>
@@ -183,275 +183,275 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Impostazioni</translation>
     </message>
     <message>
         <source>Support Tarkka</source>
-        <translation type="unfinished"></translation>
+        <translation>Supporta Tarkka</translation>
     </message>
 </context>
 <context>
     <name>Opal.About</name>
     <message>
         <source>About</source>
-        <translation type="unfinished">Informazioni</translation>
+        <translation>Informazioni</translation>
     </message>
     <message>
         <source>Version %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Versione %1</translation>
     </message>
     <message>
         <source>Development</source>
-        <translation type="unfinished"></translation>
+        <translation>Sviluppo</translation>
     </message>
     <message>
         <source>show contributors</source>
-        <translation type="unfinished"></translation>
+        <translation>mostra contributori</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"></translation>
+        <translation>Sito web</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation type="unfinished"></translation>
+        <translation>Registro modifiche</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished">Traduzioni</translation>
+        <translation>Traduzioni</translation>
     </message>
     <message>
         <source>Source Code</source>
-        <translation type="unfinished"></translation>
+        <translation>Codice sorgente</translation>
     </message>
     <message>
         <source>Donations</source>
-        <translation type="unfinished"></translation>
+        <translation>Donazioni</translation>
     </message>
     <message>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>Licenza</translation>
     </message>
     <message numerus="yes">
         <source>show license(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>mostra licenza</numerusform>
+            <numerusform>mostra licenze</numerusform>
         </translation>
     </message>
     <message>
         <source>News</source>
-        <translation type="unfinished"></translation>
+        <translation>Novità</translation>
     </message>
     <message>
         <source>Changes since version %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifiche dalla versione %1</translation>
     </message>
     <message>
         <source>show details</source>
-        <translation type="unfinished"></translation>
+        <translation>mostra dettagli</translation>
     </message>
     <message>
         <source>Thank you!</source>
-        <translation type="unfinished"></translation>
+        <translation>Grazie!</translation>
     </message>
     <message>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Dettagli</translation>
     </message>
     <message>
         <source>Contributors</source>
-        <translation type="unfinished"></translation>
+        <translation>Contributori</translation>
     </message>
     <message>
         <source>Acknowledgements</source>
-        <translation type="unfinished"></translation>
+        <translation>Riconoscimenti</translation>
     </message>
     <message>
         <source>Please refer to &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Consulta &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Download license texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Scarica testi delle licenze</translation>
     </message>
     <message>
         <source>You are using a mobile data connection.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stai usando una connessione dati mobile.</translation>
     </message>
     <message numerus="yes">
         <source>License(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Licenza</numerusform>
+            <numerusform>Licenze</numerusform>
         </translation>
     </message>
     <message>
         <source>Note: please check the source code for most accurate information.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nota: controlla il codice sorgente per le informazioni più accurate.</translation>
     </message>
 </context>
 <context>
     <name>Opal.About.Common</name>
     <message>
         <source>If you want to support my work, you can buy me a cup of coffee.</source>
-        <translation type="unfinished"></translation>
+        <translation>Se vuoi supportare il mio lavoro, puoi offrirmi un caffè.</translation>
     </message>
     <message>
         <source>You can support this project by contributing, or by donating using any of these services.</source>
-        <translation type="unfinished"></translation>
+        <translation>Puoi supportare questo progetto contribuendo o donando tramite uno di questi servizi.</translation>
     </message>
     <message>
         <source>Your contributions to translations or code would be most welcome.</source>
-        <translation type="unfinished"></translation>
+        <translation>I tuoi contributi alle traduzioni o al codice sono benvenuti.</translation>
     </message>
 </context>
 <context>
     <name>Opal.LinkHandler</name>
     <message>
         <source>Copied to clipboard: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Copiato negli appunti: %1</translation>
     </message>
     <message>
         <source>Share link</source>
-        <translation type="unfinished"></translation>
+        <translation>Condividi link</translation>
     </message>
     <message>
         <source>Phone number</source>
-        <translation type="unfinished"></translation>
+        <translation>Numero di telefono</translation>
     </message>
     <message>
         <source>External link</source>
-        <translation type="unfinished"></translation>
+        <translation>Link esterno</translation>
     </message>
     <message>
         <source>Open in browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Apri nel browser</translation>
     </message>
     <message>
         <source>Open externally</source>
-        <translation type="unfinished"></translation>
+        <translation>Apri esternamente</translation>
     </message>
     <message>
         <source>Share</source>
-        <translation type="unfinished">Condividi</translation>
+        <translation>Condividi</translation>
     </message>
     <message>
         <source>Copy link</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia link</translation>
     </message>
     <message>
         <source>Copy text</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia testo</translation>
     </message>
     <message>
         <source>No preview available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Anteprima non disponibile.</translation>
     </message>
     <message>
         <source>The page is taking too long to load.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il caricamento della pagina sta impiegando troppo tempo.</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Impostazioni</translation>
     </message>
     <message>
         <source>Filters</source>
-        <translation type="unfinished">Filtri</translation>
+        <translation>Filtri</translation>
     </message>
     <message>
         <source>Reset to defaults</source>
-        <translation type="unfinished"></translation>
+        <translation>Ripristina predefiniti</translation>
     </message>
     <message>
-        <source>No filter is always shown and stays first. Use the switches to show or hide other filters, and drag to reorder them.</source>
-        <translation type="unfinished"></translation>
+        <source>No filter is always shown and stays first. Use the switches or tap a name to show or hide other filters, and drag to reorder them.</source>
+        <translation>&quot;Nessun filtro&quot; è sempre visibile e resta per primo. Usa gli interruttori o tocca un nome per mostrare o nascondere gli altri filtri, e trascina per riordinarli.</translation>
     </message>
 </context>
 <context>
     <name>SupportDialog</name>
     <message>
         <source>Hi there!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ciao!</translation>
     </message>
     <message>
         <source>Thank you for using my little app! Maybe you can contribute back?</source>
-        <translation type="unfinished"></translation>
+        <translation>Grazie per usare la mia piccola app! Forse puoi ricambiare?</translation>
     </message>
     <message>
         <source>Thank you for your support!</source>
-        <translation type="unfinished"></translation>
+        <translation>Grazie per il tuo supporto!</translation>
     </message>
     <message>
         <source>Remind me later</source>
-        <translation type="unfinished"></translation>
+        <translation>Ricordamelo più tardi</translation>
     </message>
     <message>
         <source>Don&apos;t ask me again</source>
-        <translation type="unfinished"></translation>
+        <translation>Non chiedermelo più</translation>
     </message>
 </context>
 <context>
     <name>TarkkaSupportDialog</name>
     <message>
         <source>Hi there!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ciao!</translation>
     </message>
     <message>
         <source>Thank you for using Tarkka! If you find it useful, consider supporting its development.</source>
-        <translation type="unfinished"></translation>
+        <translation>Grazie per usare Tarkka! Se ti è utile, considera di supportarne lo sviluppo.</translation>
     </message>
     <message>
         <source>Thank you for your support!</source>
-        <translation type="unfinished"></translation>
+        <translation>Grazie per il tuo supporto!</translation>
     </message>
     <message>
         <source>Donate via Liberapay</source>
-        <translation type="unfinished"></translation>
+        <translation>Dona tramite Liberapay</translation>
     </message>
     <message>
         <source>Send a tip or recurring support on Liberapay.</source>
-        <translation type="unfinished"></translation>
+        <translation>Invia una mancia o un supporto ricorrente su Liberapay.</translation>
     </message>
     <message>
         <source>Help with translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Aiuta con le traduzioni</translation>
     </message>
     <message>
         <source>Improve Tarkka in your language on Transifex.</source>
-        <translation type="unfinished"></translation>
+        <translation>Migliora Tarkka nella tua lingua su Transifex.</translation>
     </message>
     <message>
         <source>Report issues on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Segnala problemi su GitHub</translation>
     </message>
     <message>
         <source>File bugs, suggest features, or follow development.</source>
-        <translation type="unfinished"></translation>
+        <translation>Segnala bug, suggerisci funzionalità o segui lo sviluppo.</translation>
     </message>
     <message>
         <source>Why support this app?</source>
-        <translation type="unfinished"></translation>
+        <translation>Perché supportare questa app?</translation>
     </message>
     <message>
         <source>Tarkka is free software (GPLv3) — a digital magnifier for Sailfish OS. It is maintained in spare time.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tarkka è software libero (GPLv3) — una lente d&apos;ingrandimento digitale per Sailfish OS. È mantenuto nel tempo libero.</translation>
     </message>
     <message>
         <source>Donations and contributions help keep the app compatible with new Sailfish releases and devices.</source>
-        <translation type="unfinished"></translation>
+        <translation>Donazioni e contributi aiutano a mantenere l&apos;app compatibile con le nuove versioni di Sailfish e i nuovi dispositivi.</translation>
     </message>
     <message>
         <source>Other ways to help</source>
-        <translation type="unfinished"></translation>
+        <translation>Altri modi per aiutare</translation>
     </message>
     <message>
         <source>Share the app, test on your device, or star the project on GitHub — every bit helps.</source>
-        <translation type="unfinished"></translation>
+        <translation>Condividi l&apos;app, prova sul tuo dispositivo o metti una stella al progetto su GitHub — ogni piccolo gesto conta.</translation>
     </message>
 </context>
 </TS>

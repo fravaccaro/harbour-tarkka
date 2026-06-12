@@ -1,3 +1,17 @@
+# Editor / OS
+*~
+.DS_Store
+
+# Sailfish SDK / packaging
+RPMS/
+build/
+deploy/
+.sfdk/
+documentation.list
+
+# Compiled translations
+*.qm
+
 # C++ objects and libs
 *.slo
 *.lo
@@ -9,35 +23,36 @@
 *.dll
 *.dylib
 
-# Qt-es
+# qmake / Qt build
+/.qmake.cache
+/.qmake.stash
+Makefile*
+*build-*
 object_script.*.Release
 object_script.*.Debug
 *_plugin_import.cpp
-/.qmake.cache
-/.qmake.stash
-*.pro.user
-*.pro.user.*
-*.qbs.user
-*.qbs.user.*
 *.moc
 moc_*.cpp
 moc_*.h
+moc_predefs.h
 qrc_*.cpp
 ui_*.h
 *.qmlc
 *.jsc
-Makefile*
-*build-*
+
+# QtCreator
+*.pro.user
+*.pro.user.*
+*.qbs.user
+*.qbs.user.*
+*.autosave
+*.qmlproject.user
+*.qmlproject.user.*
+CMakeLists.txt.user*
 
 # Qt unit tests
 target_wrapper.*
 
-# QtCreator
-*.autosave
-
-# QtCreator Qml
-*.qmlproject.user
-*.qmlproject.user.*
-
-# QtCreator CMake
-CMakeLists.txt.user*
+# Opal (generated / local tooling)
+libs/opal/
+libs/opal-docs/opal-*.qch

@@ -5,7 +5,7 @@ import Sailfish.Silica 1.0
 A.AboutPageBase {
     appName: "Tarkka"
     appIcon: Qt.resolvedUrl("../../images/appinfo.png")
-    appVersion: "0.5.3"
+    appVersion: "0.6.0"
     description: qsTr("Tarkka is a digital magnifier designed specifically for Sailfish OS. It leverages native camera capabilities to help you observe details clearly.")
     authors: ["fravaccaro"]
     homepageUrl: "https://github.com/fravaccaro/harbour-tarkka"

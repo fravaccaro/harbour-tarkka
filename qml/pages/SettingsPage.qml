@@ -31,7 +31,7 @@ Page {
                 width: parent.width - 2 * x
                 wrapMode: Text.WordWrap
                 color: Theme.secondaryHighlightColor
-                text: qsTr("No filter is always shown and stays first. Use the switches to show or hide other filters, and drag to reorder them.")
+                text: qsTr("No filter is always shown and stays first. Use the switches or tap a name to show or hide other filters, and drag to reorder them.")
             }
         }
 
@@ -49,12 +49,38 @@ Page {
             }
         }
 
-        delegate: D.OneLineDelegate {
+        delegate: D.PaddedDelegate {
+            id: rowDelegate
+
             width: filterList.width
             interactive: false
             dragHandler: filterType === 0 ? null : viewDragHandler
             enableDefaultGrabHandle: filterType !== 0
-            text: name
+            minContentHeight: Theme.itemSizeSmall - padding.effectiveTop - padding.effectiveBottom
+
+            Item {
+                id: contentColumn
+
+                width: parent.width
+                height: label.height
+
+                D.OptionalLabel {
+                    id: label
+
+                    width: parent.width
+                    text: name
+                    font.pixelSize: Theme.fontSizeMedium
+                    opacity: FilterSettings.isVisible(filterType) ? 1.0 : Theme.opacityLow
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    enabled: filterType !== 0
+                    onClicked: FilterSettings.setVisible(filterType, !FilterSettings.isVisible(filterType))
+                }
+            }
+
+            centeredContainer: contentColumn
 
             leftItem: Component {
                 TextSwitch {

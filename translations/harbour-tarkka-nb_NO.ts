@@ -368,7 +368,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>No filter is always shown and stays first. Use the switches to show or hide other filters, and drag to reorder them.</source>
+        <source>No filter is always shown and stays first. Use the switches or tap a name to show or hide other filters, and drag to reorder them.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

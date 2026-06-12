@@ -1,3 +1,9 @@
+* Fri Jun 12 2026 0.6.0
+- Filter settings: show, hide, and reorder filters (persisted)
+- Settings page with reset to defaults
+- Opal About page and SupportMe dialog (Liberapay, Transifex, GitHub)
+- Tap a filter name in Settings to toggle visibility
+
 * Wed Apr 15 2026 0.5.3
 - Revert Jolla C++ usage.
 - Fix aspect ratio on tall devices (e.g. Xperia 10 III)
