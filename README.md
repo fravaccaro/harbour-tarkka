@@ -12,15 +12,22 @@ Turn your Sailfish OS device into a digital magnifying glass. Designed for simpl
 
 [![GitHub issues](https://img.shields.io/github/issues/fravaccaro/harbour-tarkka.svg)](https://github.com/fravaccaro/harbour-tarkka/issues) [![GitHub releases](https://img.shields.io/github/release/fravaccaro/harbour-tarkka.svg)](https://github.com/fravaccaro/harbour-tarkka/releases/latest)
 
-## Screenshots
+## Donate
+
+The SailfishOS Community Team is on Liberapay:
+
+[![Liberapay receiving](https://img.shields.io/liberapay/receives/SailfishOScommunityTeam?logo=liberapay&label=SailfishOSCommunity)](https://liberapay.com/SailfishOScommunityTeam)
+
+[![Liberapay receiving](https://img.shields.io/liberapay/receives/fravaccaro?logo=liberapay&label=fravaccaro)](https://liberapay.com/fravaccaro)
+
+
+## Features
 
 <p align="left">
   <img src="screenshots/grayscale.png" alt="Grayscale" width="32%" />
   <img src="screenshots/brightness.png" alt="Brightness" width="32%" />
   <img src="screenshots/contrast.png" alt="Contrast" width="32%" />
 </p>
-
-## Features
 
 * Smooth digital zoom up to 4x.
 * Specialized filters: Negative, Grayscale, Whiteboard, Blackboard, Yellow on black, Black on yellow, Yellow on blue, Blue on yellow, White on blue, Blue on white, Red on black, Black on red.
