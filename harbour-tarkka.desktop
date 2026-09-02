@@ -6,6 +6,6 @@ Exec=harbour-tarkka
 Name=Tarkka
 
 [X-Sailjail]
-OrganizationName=org.harbour-tarkka
+OrganizationName=org.frapps.tarkka
 ApplicationName=harbour-tarkka
 Permissions=Camera;Pictures
