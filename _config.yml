@@ -5,6 +5,7 @@ baseurl: "/harbour-tarkka"
 exclude:
   - icons/
   - images/
+  - landing/
   - qml/
   - rpm/
   - src/
